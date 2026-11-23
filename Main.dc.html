@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AISAR — Safety and verification platform for trucking</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+*{box-sizing:border-box}
+a{color:#0A7AA6;text-decoration:none}
+a:hover{color:#075E80}
+a:focus-visible,button:focus-visible{outline:2px solid #68CFF7;outline-offset:3px;border-radius:8px}
+.nav-a{color:rgba(255,255,255,.72);font-size:14px;font-weight:500;transition:color .15s ease}
+.nav-a:hover{color:#FFFFFF}
+.nav-pill{display:inline-flex;align-items:center;padding:8px 12px;border-radius:8px;transition:background .15s ease,color .15s ease}
+.nav-pill:hover{background:rgba(255,255,255,.07)}
+@media (max-width: 1060px){.hide-sm{display:none !important}}
+#news::placeholder{color:rgba(255,255,255,.45)}
+.btn-sky{background:#68CFF7;color:#0F172A;transition:background .15s ease, transform .15s ease}
+.btn-sky:hover{background:#8ADBFA;color:#0F172A;transform:translateY(-1px)}
+.btn-ghost{color:#FFFFFF;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.16);transition:border-color .15s ease, background .15s ease}
+.btn-ghost:hover{color:#FFFFFF;border-color:rgba(104,207,247,.6);background:rgba(255,255,255,.07)}
+.btn-navy{background:#11284A;color:#FFFFFF;transition:background .15s ease}
+.btn-navy:hover{background:#1B3C6B;color:#FFFFFF}
+.card{transition:border-color .2s ease, box-shadow .2s ease}
+.card:hover{border-color:#CFE3EE;box-shadow:0 1px 2px rgba(15,23,42,.04),0 16px 36px -18px rgba(15,23,42,.18)}
+.foot-a{color:#A9B6CF;font-size:14px;transition:color .15s ease}
+.foot-a:hover{color:#FFFFFF}
+.phone{margin-left:-64px;margin-top:88px}
+@media (max-width: 760px){.phone{margin-left:0;margin-top:20px}}
+@media (max-width: 960px){.nav-links{display:none !important}}
+@keyframes drive{from{transform:translateX(0)}to{transform:translateX(-120px)}}
+.lanes{animation:drive 1.4s linear infinite}
+@media (prefers-reduced-motion: reduce){.lanes{animation:none}}
+input,select{font:inherit}
+input:focus,select:focus{outline:2px solid #68CFF7;outline-offset:1px}
+</style>
+</helmet>
+<div style="font-family: Geist, Inter, system-ui, sans-serif; color: #0F172A; font-size: 16px; background: #FFFFFF; -webkit-font-smoothing: antialiased; width: 100%; overflow: hidden;">
+
+<!-- ============ NAV ============ -->
+<header style="position: sticky; top: 0; z-index: 50; background: rgba(22,51,96,.88); backdrop-filter: saturate(160%) blur(14px); -webkit-backdrop-filter: saturate(160%) blur(14px); border-bottom: 1px solid rgba(255,255,255,.08);">
+<div style="max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+<div style="display: flex; align-items: center; gap: 40px;">
+<a href="#top" aria-label="AISAR home" style="display: flex; align-items: center; gap: 10px; color: #FFFFFF;">
+<svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#68CFF7"></rect><path d="M27.5 14 L36.5 14 L52 54 L12 54 Z" fill="#163360"></path><rect x="30.6" y="42" width="2.8" height="9" rx="1" fill="#68CFF7"></rect><rect x="31" y="30" width="2" height="7" rx="1" fill="#68CFF7"></rect><rect x="31.3" y="20" width="1.4" height="5" rx="0.7" fill="#68CFF7"></rect></svg>
+<span style="font-weight: 600; font-size: 17px; letter-spacing: .12em;">AISAR</span>
+</a>
+<nav class="nav-links" aria-label="Main" style="display: flex; align-items: center; gap: 4px;">
+<a class="nav-a nav-pill" href="#platform">Platform<svg width="10" height="10" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 6px; opacity: .7;"><path d="M6 9l6 6 6-6"></path></svg></a>
+<a class="nav-a nav-pill" href="#solutions">Solutions<svg width="10" height="10" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 6px; opacity: .7;"><path d="M6 9l6 6 6-6"></path></svg></a>
+<a class="nav-a nav-pill" href="#freight">Freight security</a>
+<a class="nav-a nav-pill" href="#security">Security</a>
+<a class="nav-a nav-pill" href="#roadmap">Roadmap</a>
+</nav>
+</div>
+<div style="display: flex; align-items: center; gap: 6px;">
+<a class="nav-a nav-pill hide-sm" href="#contact">Contact sales</a>
+<span class="hide-sm" aria-hidden="true" style="width: 1px; height: 18px; background: rgba(255,255,255,.16); margin: 0 6px;"></span>
+<a class="nav-a nav-pill" href="#contact">Sign in</a>
+<a class="btn-sky" href="#contact" style="margin-left: 4px; font-size: 14px; font-weight: 500; padding: 9px 16px; border-radius: 9px;">Request a demo</a>
+</div>
+</div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="top" style="position: relative; overflow: hidden; color: #FFFFFF; background: radial-gradient(820px 480px at 88% 0%, rgba(104,207,247,.16), rgba(22,51,96,0) 70%), radial-gradient(680px 520px at 0% 100%, rgba(104,207,247,.10), rgba(22,51,96,0) 70%), #163360;">
+<div aria-hidden="true" style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.07) 1px, transparent 1px); background-size: 28px 28px; mask-image: linear-gradient(180deg, rgba(0,0,0,.9), rgba(0,0,0,0) 85%); -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,.9), rgba(0,0,0,0) 85%);"></div>
+<div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 88px 24px 72px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center;">
+<div style="flex: 1 1 440px; min-width: 0;">
+<p style="margin: 0; display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,.82); background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); padding: 5px 12px 5px 5px; border-radius: 999px;"><span style="font-size: 12px; font-weight: 600; color: #0F172A; background: #68CFF7; padding: 3px 9px; border-radius: 999px;">Early access</span>For carriers, brokers and insurers</p>
+<h1 style="margin: 22px 0 0; max-width: 560px; font-weight: 600; font-size: clamp(36px, 4.2vw, 54px); line-height: 1.06; letter-spacing: -.04em; color: #FFFFFF;">The safety and verification platform <span style="color: #68CFF7;">for trucking.</span></h1>
+<p style="margin: 20px 0 0; max-width: 420px; font-size: 17px; line-height: 1.6; color: rgba(255,255,255,.66);">One verified record for every driver, truck, policy and load.</p>
+<div style="margin-top: 32px; display: flex; flex-wrap: wrap; gap: 10px;">
+<a class="btn-sky" href="#contact" style="font-size: 15px; font-weight: 500; padding: 12px 20px; border-radius: 10px; box-shadow: 0 10px 30px -10px rgba(104,207,247,.6);">Request a demo</a>
+<a class="btn-ghost" href="#platform" style="font-size: 15px; font-weight: 500; padding: 12px 20px; border-radius: 10px;">Explore the platform</a>
+</div>
+</div>
+
+<div style="flex: 1 1 560px; min-width: 0; display: flex; flex-wrap: wrap; align-items: flex-start;">
+<div style="flex: 1 1 400px; min-width: 0; background: #FFFFFF; color: #0F172A; border-radius: 16px; overflow: hidden; box-shadow: 0 0 0 1px rgba(255,255,255,.08), 0 40px 80px -30px rgba(0,0,0,.6);">
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; border-bottom: 1px solid #EEF1F5;">
+<span style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #16A34A;"></span>Fleet overview</span>
+<span style="font-size: 12px; color: #94A3B8;">Sample data</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-bottom: 1px solid #EEF1F5;">
+<div style="padding: 14px 18px;"><p style="margin: 0; font-size: 12px; color: #64748B;">Verified</p><p style="margin: 4px 0 0; font-size: 22px; font-weight: 600; letter-spacing: -.03em;">248</p></div>
+<div style="padding: 14px 18px; border-left: 1px solid #EEF1F5;"><p style="margin: 0; font-size: 12px; color: #64748B;">In transit</p><p style="margin: 4px 0 0; font-size: 22px; font-weight: 600; letter-spacing: -.03em;">36</p></div>
+<div style="padding: 14px 18px; border-left: 1px solid #EEF1F5;"><p style="margin: 0; font-size: 12px; color: #64748B;">Pending</p><p style="margin: 4px 0 0; font-size: 22px; font-weight: 600; letter-spacing: -.03em;">12</p></div>
+<div style="padding: 14px 18px; border-left: 1px solid #EEF1F5;"><p style="margin: 0; font-size: 12px; color: #64748B;">Alerts</p><p style="margin: 4px 0 0; font-size: 22px; font-weight: 600; letter-spacing: -.03em; color: #B45309;">5</p></div>
+</div>
+<div style="padding: 4px 18px 10px;">
+<div style="display: grid; grid-template-columns: 1.3fr 1fr 1.2fr; gap: 8px; padding: 10px 0; font-size: 12px; font-weight: 500; color: #94A3B8;"><span>Driver</span><span>Truck</span><span>Status</span></div>
+<div style="display: grid; grid-template-columns: 1.3fr 1fr 1.2fr; gap: 8px; padding: 10px 0; font-size: 14px; align-items: center; border-top: 1px solid #F1F4F8;"><span style="font-weight: 500;">J. Ramirez</span><span style="font-family: 'Geist Mono', monospace; font-size: 13px; color: #64748B;">TRK-214</span><span style="font-size: 12px; font-weight: 500; color: #15803D; background: #ECFDF3; padding: 3px 8px; border-radius: 999px; width: fit-content;">Verified</span></div>
+<div style="display: grid; grid-template-columns: 1.3fr 1fr 1.2fr; gap: 8px; padding: 10px 0; font-size: 14px; align-items: center; border-top: 1px solid #F1F4F8;"><span style="font-weight: 500;">D. Okafor</span><span style="font-family: 'Geist Mono', monospace; font-size: 13px; color: #64748B;">TRK-087</span><span style="font-size: 12px; font-weight: 500; color: #15803D; background: #ECFDF3; padding: 3px 8px; border-radius: 999px; width: fit-content;">Verified</span></div>
+<div style="display: grid; grid-template-columns: 1.3fr 1fr 1.2fr; gap: 8px; padding: 10px 0; font-size: 14px; align-items: center; border-top: 1px solid #F1F4F8;"><span style="font-weight: 500;">M. Chen</span><span style="font-family: 'Geist Mono', monospace; font-size: 13px; color: #64748B;">TRK-301</span><span style="font-size: 12px; font-weight: 500; color: #B45309; background: #FFF7E6; padding: 3px 8px; border-radius: 999px; width: fit-content;">Location mismatch</span></div>
+<div style="display: grid; grid-template-columns: 1.3fr 1fr 1.2fr; gap: 8px; padding: 10px 0; font-size: 14px; align-items: center; border-top: 1px solid #F1F4F8;"><span style="font-weight: 500;">S. Patel</span><span style="font-family: 'Geist Mono', monospace; font-size: 13px; color: #64748B;">TRK-122</span><span style="font-size: 12px; font-weight: 500; color: #0A7AA6; background: #EAF7FD; padding: 3px 8px; border-radius: 999px; width: fit-content;">Pending</span></div>
+</div>
+</div>
+<div class="phone" style="flex: 0 0 220px; position: relative; z-index: 1; background: #0C2140; border-radius: 34px; padding: 9px; box-shadow: 0 0 0 1px rgba(255,255,255,.1), 0 40px 80px -24px rgba(0,0,0,.7);">
+<div style="background: #FFFFFF; color: #0F172A; border-radius: 26px; padding: 20px 16px 16px; display: flex; flex-direction: column; align-items: center; gap: 12px;">
+<span style="width: 56px; height: 5px; border-radius: 999px; background: #E2E8F0;"></span>
+<p style="margin: 0; font-size: 12px; font-weight: 500; color: #64748B;">Pickup check, load L-1042</p>
+<div style="width: 88px; height: 88px; border-radius: 50%; border: 2px solid #68CFF7; background: #EAF7FD; display: flex; align-items: center; justify-content: center;">
+<svg width="46" height="46" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#0A7AA6" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="9" r="4"></circle><path d="M5 20c1-3.5 3.8-5.5 7-5.5s6 2 7 5.5"></path></svg>
+</div>
+<p style="margin: 0; display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: #15803D;"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#15803D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Face match confirmed</p>
+<div style="display: flex; gap: 6px;">
+<span style="width: 34px; height: 42px; border-radius: 8px; border: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: center; font-family: 'Geist Mono', monospace; font-size: 18px;">4</span>
+<span style="width: 34px; height: 42px; border-radius: 8px; border: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: center; font-family: 'Geist Mono', monospace; font-size: 18px;">8</span>
+<span style="width: 34px; height: 42px; border-radius: 8px; border: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: center; font-family: 'Geist Mono', monospace; font-size: 18px;">2</span>
+<span style="width: 34px; height: 42px; border-radius: 8px; border: 1.5px solid #68CFF7; display: flex; align-items: center; justify-content: center; font-family: 'Geist Mono', monospace; font-size: 18px;">7</span>
+</div>
+<p style="margin: 0; font-size: 12px; color: #94A3B8;">One-time pickup code</p>
+<span style="width: 100%; text-align: center; font-size: 14px; font-weight: 500; color: #FFFFFF; background: #11284A; padding: 11px; border-radius: 10px;">Confirm pickup</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ============ HIGHWAY ============ -->
+<section aria-label="AISAR on the road" style="position: relative; background: #163360; color: #FFFFFF;">
+<div style="max-width: 1200px; margin: 0 auto; padding: 8px 24px 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; position: relative; z-index: 1;">
+<span style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,.85); background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); padding: 8px 14px; border-radius: 999px;"><span style="width: 6px; height: 6px; border-radius: 50%; background: #22C55E;"></span>Driver verified</span>
+<span style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,.85); background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); padding: 8px 14px; border-radius: 999px;"><span style="width: 6px; height: 6px; border-radius: 50%; background: #22C55E;"></span>ELD synced</span>
+<span style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,.85); background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); padding: 8px 14px; border-radius: 999px;"><span style="width: 6px; height: 6px; border-radius: 50%; background: #22C55E;"></span>Insurance active</span>
+<span style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,.85); background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); padding: 8px 14px; border-radius: 999px;"><span style="width: 6px; height: 6px; border-radius: 50%; background: #68CFF7;"></span>On planned route</span>
+</div>
+<svg viewBox="0 0 1440 340" preserveAspectRatio="xMidYMax slice" role="img" aria-label="An AISAR-branded semi truck driving on a highway" style="display: block; width: 100%; height: auto; min-height: 220px;">
+<path d="M0 230 C 180 170, 320 200, 460 180 S 760 140, 920 175 S 1240 160, 1440 190 L1440 260 L0 260 Z" fill="#1A3A66"></path>
+<path d="M0 245 C 220 205, 420 230, 640 212 S 1040 200, 1440 222 L1440 260 L0 260 Z" fill="#204678"></path>
+<rect x="0" y="256" width="1440" height="84" fill="#0C2140"></rect>
+<rect x="0" y="256" width="1440" height="3" fill="#68CFF7" fill-opacity="0.5"></rect>
+<g class="lanes"><path d="M0 300 L1560 300" stroke="#E2E8F0" stroke-opacity="0.85" stroke-width="4" stroke-dasharray="56 64"></path></g>
+<g transform="translate(400 46)">
+<g stroke="#68CFF7" stroke-width="3" stroke-linecap="round" opacity="0.6"><path d="M-120 110 L-40 110"></path><path d="M-160 150 L-30 150"></path><path d="M-100 190 L-20 190"></path></g>
+<rect x="0" y="40" width="470" height="150" rx="6" fill="#FFFFFF"></rect>
+<rect x="0" y="168" width="470" height="22" fill="#68CFF7"></rect>
+<rect x="150" y="80" width="60" height="60" rx="15" fill="#68CFF7"></rect>
+<path d="M175.8 91 L184.2 91 L198.8 128.5 L161.2 128.5 Z" fill="#11284A"></path>
+<rect x="178.6" y="116" width="2.8" height="9" rx="1" fill="#68CFF7"></rect>
+<rect x="179" y="104" width="2" height="7" rx="1" fill="#68CFF7"></rect>
+<text x="226" y="126" font-family="Geist, Inter, sans-serif" font-size="44" font-weight="600" letter-spacing="6" fill="#11284A">AISAR</text>
+<rect x="0" y="190" width="470" height="12" fill="#334155"></rect>
+<rect x="470" y="176" width="40" height="16" fill="#334155"></rect>
+<rect x="508" y="60" width="96" height="140" rx="8" fill="#68CFF7"></rect>
+<path d="M600 60 L650 60 Q664 60 669 74 L686 124 L722 132 Q734 135 734 148 L734 198 L600 198 Z" fill="#68CFF7"></path>
+<path d="M614 72 L646 72 Q654 72 657 80 L670 118 L614 118 Z" fill="#11284A"></path>
+<rect x="598" y="124" width="2" height="70" fill="#11284A"></rect>
+<rect x="640" y="138" width="16" height="4" rx="2" fill="#11284A"></rect>
+<rect x="590" y="12" width="8" height="52" rx="3" fill="#94A3B8"></rect>
+<rect x="724" y="150" width="12" height="10" rx="2" fill="#FDE68A"></rect>
+<rect x="726" y="178" width="14" height="22" rx="3" fill="#94A3B8"></rect>
+<rect x="508" y="176" width="226" height="10" fill="#11284A"></rect>
+<g fill="#0F172A"><circle cx="70" cy="206" r="26"></circle><circle cx="130" cy="206" r="26"></circle><circle cx="540" cy="206" r="26"></circle><circle cx="598" cy="206" r="26"></circle><circle cx="690" cy="206" r="26"></circle></g>
+<g fill="#94A3B8"><circle cx="70" cy="206" r="10"></circle><circle cx="130" cy="206" r="10"></circle><circle cx="540" cy="206" r="10"></circle><circle cx="598" cy="206" r="10"></circle><circle cx="690" cy="206" r="10"></circle></g>
+</g>
+</svg>
+</section>
+
+<!-- ============ ROLE STRIP ============ -->
+<section id="solutions" style="background: #163360; color: #FFFFFF; border-top: 1px solid rgba(255,255,255,.06);">
+<div style="max-width: 1200px; margin: 0 auto; padding: 36px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 24px;">
+<div style="display: flex; gap: 14px; align-items: center;"><span style="flex: none; width: 40px; height: 40px; border-radius: 10px; background: rgba(104,207,247,.12); display: flex; align-items: center; justify-content: center;"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#68CFF7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="12" height="9" rx="1"></rect><path d="M14 10h4l3 3v3h-7z"></path><circle cx="6" cy="18" r="2"></circle><circle cx="17" cy="18" r="2"></circle></svg></span><div><p style="margin: 0; font-weight: 600; font-size: 15px;">Trucking companies</p><p style="margin: 2px 0 0; font-size: 13px; color: #A9B6CF;">Drivers, trucks and compliance</p></div></div>
+<div style="display: flex; gap: 14px; align-items: center;"><span style="flex: none; width: 40px; height: 40px; border-radius: 10px; background: rgba(104,207,247,.12); display: flex; align-items: center; justify-content: center;"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#68CFF7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4z"></path><path d="M3 7v10l9 4 9-4V7"></path><path d="M12 11v10"></path></svg></span><div><p style="margin: 0; font-weight: 600; font-size: 15px;">Freight brokers</p><p style="margin: 2px 0 0; font-size: 13px; color: #A9B6CF;">Carrier vetting and load tracking</p></div></div>
+<div style="display: flex; gap: 14px; align-items: center;"><span style="flex: none; width: 40px; height: 40px; border-radius: 10px; background: rgba(104,207,247,.12); display: flex; align-items: center; justify-content: center;"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#68CFF7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"></path></svg></span><div><p style="margin: 0; font-weight: 600; font-size: 15px;">Drivers</p><p style="margin: 2px 0 0; font-size: 13px; color: #A9B6CF;">A verified safety record</p></div></div>
+<div style="display: flex; gap: 14px; align-items: center;"><span style="flex: none; width: 40px; height: 40px; border-radius: 10px; background: rgba(104,207,247,.12); display: flex; align-items: center; justify-content: center;"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#68CFF7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"></path><path d="M8.5 12l2.5 2.5 4.5-5"></path></svg></span><div><p style="margin: 0; font-weight: 600; font-size: 15px;">Insurance agents</p><p style="margin: 2px 0 0; font-size: 13px; color: #A9B6CF;">Coverage tied to drivers and VINs</p></div></div>
+</div>
+</section>
+
+<!-- ============ INTEGRATIONS ============ -->
+<section aria-label="Integrations" style="background: #FFFFFF; padding: 44px 24px; border-bottom: 1px solid #EEF1F5;">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 40px;">
+<p style="margin: 0; font-size: 14px; color: #64748B; max-width: 220px; line-height: 1.5;">Connects with the systems your fleet already runs</p>
+<div style="flex: 1 1 640px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 18px 28px;">
+<span style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: #334155;"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#0A7AA6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"></rect><path d="M9 2v4M15 2v4M9 18v4M15 18v4"></path></svg>ELD providers</span>
+<span style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: #334155;"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#0A7AA6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V9l8-5 8 5v11"></path><path d="M9 20v-6h6v6"></path></svg>FMCSA / SAFER</span>
+<span style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: #334155;"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#0A7AA6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18"></path></svg>Carrier software</span>
+<span style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: #334155;"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#0A7AA6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="4"></circle><path d="M5 20c1-3.5 3.8-5.5 7-5.5s6 2 7 5.5"></path></svg>Identity verification</span>
+<span style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: #334155;"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#0A7AA6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"></path><path d="M9 4v14M15 6v14"></path></svg>Maps and speed limits</span>
+<span style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: #334155;"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#0A7AA6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"></path><path d="M10 21h4"></path></svg>Push and SMS</span>
+</div>
+</div>
+</section>
+
+<!-- ============ PROBLEM / SOLUTION ============ -->
+<section id="platform" style="background: #FFFFFF; padding: 104px 24px;">
+<div style="max-width: 1200px; margin: 0 auto;">
+<div style="text-align: center; max-width: 640px; margin: 0 auto;">
+<p style="margin: 0; font-size: 13px; font-weight: 500; color: #0A7AA6;">Why AISAR</p>
+<h2 style="margin: 10px 0 0; font-size: clamp(28px, 3vw, 40px); font-weight: 600; line-height: 1.12; letter-spacing: -.035em;">Stop checking five systems to trust one load.</h2>
+</div>
+<div style="margin-top: 48px; display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px;">
+<div style="border: 1px solid #E6EAF0; border-radius: 18px; padding: 32px;">
+<p style="margin: 0; font-size: 13px; font-weight: 500; color: #94A3B8;">Today</p>
+<h3 style="margin: 6px 0 0; font-size: 20px; font-weight: 600; letter-spacing: -.02em;">Disconnected records</h3>
+<ul style="margin: 22px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px;">
+<li style="display: flex; align-items: center; gap: 12px; font-size: 15px; color: #475569; border: 1px dashed #D5DCE6; border-radius: 12px; padding: 13px 14px;"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="flex: none;"><circle cx="12" cy="12" r="11" fill="#F1F4F8"></circle><path d="M8.5 8.5l7 7M15.5 8.5l-7 7" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"></path></svg>Driver ID checked in one place</li>
+<li style="display: flex; align-items: center; gap: 12px; font-size: 15px; color: #475569; border: 1px dashed #D5DCE6; border-radius: 12px; padding: 13px 14px;"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="flex: none;"><circle cx="12" cy="12" r="11" fill="#F1F4F8"></circle><path d="M8.5 8.5l7 7M15.5 8.5l-7 7" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"></path></svg>ELD data stored somewhere else</li>
+<li style="display: flex; align-items: center; gap: 12px; font-size: 15px; color: #475569; border: 1px dashed #D5DCE6; border-radius: 12px; padding: 13px 14px;"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="flex: none;"><circle cx="12" cy="12" r="11" fill="#F1F4F8"></circle><path d="M8.5 8.5l7 7M15.5 8.5l-7 7" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"></path></svg>Insurance kept separately</li>
+<li style="display: flex; align-items: center; gap: 12px; font-size: 15px; color: #475569; border: 1px dashed #D5DCE6; border-radius: 12px; padding: 13px 14px;"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="flex: none;"><circle cx="12" cy="12" r="11" fill="#F1F4F8"></circle><path d="M8.5 8.5l7 7M15.5 8.5l-7 7" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"></path></svg>Freight tracked in yet another tool</li>
+</ul>
+</div>
+<div style="background: radial-gradient(420px 260px at 100% 0%, rgba(104,207,247,.16), rgba(17,40,74,0) 70%), #163360; color: #FFFFFF; border-radius: 18px; padding: 32px;">
+<p style="margin: 0; font-size: 13px; font-weight: 500; color: #68CFF7;">With AISAR</p>
+<h3 style="margin: 6px 0 0; font-size: 20px; font-weight: 600; letter-spacing: -.02em;">One connected, verified record</h3>
+<ul style="margin: 22px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px;">
+<li style="display: flex; align-items: center; gap: 12px; font-size: 15px; color: rgba(255,255,255,.9); background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 13px 14px;"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="flex: none;"><circle cx="12" cy="12" r="11" fill="#68CFF7"></circle><path d="M7 12.5l3.2 3L17 9" stroke="#11284A" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>Driver linked to ELD, phone and truck</li>
+<li style="display: flex; align-items: center; gap: 12px; font-size: 15px; color: rgba(255,255,255,.9); background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 13px 14px;"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="flex: none;"><circle cx="12" cy="12" r="11" fill="#68CFF7"></circle><path d="M7 12.5l3.2 3L17 9" stroke="#11284A" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>Coverage confirmed per driver and VIN</li>
+<li style="display: flex; align-items: center; gap: 12px; font-size: 15px; color: rgba(255,255,255,.9); background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 13px 14px;"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="flex: none;"><circle cx="12" cy="12" r="11" fill="#68CFF7"></circle><path d="M7 12.5l3.2 3L17 9" stroke="#11284A" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>Loads monitored from pickup to delivery</li>
+<li style="display: flex; align-items: center; gap: 12px; font-size: 15px; color: rgba(255,255,255,.9); background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 13px 14px;"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="flex: none;"><circle cx="12" cy="12" r="11" fill="#68CFF7"></circle><path d="M7 12.5l3.2 3L17 9" stroke="#11284A" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>History kept for every relationship</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ============ IDENTITY ============ -->
+<section style="background: #FFFFFF; padding: 104px 24px; border-top: 1px solid #EEF1F5;">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 72px; align-items: center;">
+<div style="flex: 1 1 420px; min-width: 0;">
+<p style="margin: 0; font-size: 13px; font-weight: 500; color: #0A7AA6;">Driver identity and ELD</p>
+<h2 style="margin: 10px 0 0; font-size: clamp(26px, 2.6vw, 34px); font-weight: 600; line-height: 1.15; letter-spacing: -.03em;">Know the person behind every log.</h2>
+<p style="margin: 16px 0 0; max-width: 460px; font-size: 16px; line-height: 1.65; color: #475569;">License, face, phone and ELD identity in one profile that follows the driver to every truck and load.</p>
+<ul style="margin: 26px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 15px; color: #1E293B;">
+<li style="display: flex; gap: 10px; align-items: center;"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="flex: none;"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#0A7AA6" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>License scan and face match at sign-up</li>
+<li style="display: flex; gap: 10px; align-items: center;"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="flex: none;"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#0A7AA6" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>Original ELD records kept untouched</li>
+<li style="display: flex; gap: 10px; align-items: center;"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="flex: none;"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#0A7AA6" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>Safety score from real driving behavior</li>
+</ul>
+</div>
+<div style="flex: 1 1 460px; min-width: 0; border: 1px solid #E6EAF0; border-radius: 18px; padding: 24px; box-shadow: 0 1px 2px rgba(15,23,42,.04), 0 24px 48px -24px rgba(15,23,42,.18);">
+<div style="display: flex; align-items: center; gap: 14px;">
+<div style="width: 52px; height: 52px; border-radius: 50%; background: #EAF7FD; display: flex; align-items: center; justify-content: center;"><svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#0A7AA6" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="9" r="4"></circle><path d="M5 20c1-3.5 3.8-5.5 7-5.5s6 2 7 5.5"></path></svg></div>
+<div style="flex: 1;"><p style="margin: 0; font-size: 17px; font-weight: 600; letter-spacing: -.01em;">J. Ramirez</p><p style="margin: 2px 0 0; font-size: 13px; color: #94A3B8;">Driver profile, sample</p></div>
+<span style="font-size: 12px; font-weight: 500; color: #15803D; background: #ECFDF3; padding: 4px 10px; border-radius: 999px;">Verified</span>
+</div>
+<div style="margin-top: 20px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;">
+<div style="border: 1px solid #EEF1F5; border-radius: 12px; padding: 12px 14px;"><p style="margin: 0; font-size: 12px; color: #94A3B8;">License</p><p style="margin: 3px 0 0; font-weight: 500; font-size: 14px;">Matched to face</p></div>
+<div style="border: 1px solid #EEF1F5; border-radius: 12px; padding: 12px 14px;"><p style="margin: 0; font-size: 12px; color: #94A3B8;">ELD profile</p><p style="margin: 3px 0 0; font-weight: 500; font-size: 14px;">Linked</p></div>
+<div style="border: 1px solid #EEF1F5; border-radius: 12px; padding: 12px 14px;"><p style="margin: 0; font-size: 12px; color: #94A3B8;">Assigned truck</p><p style="margin: 3px 0 0; font-weight: 500; font-size: 14px;">TRK-214</p></div>
+<div style="border: 1px solid #EEF1F5; border-radius: 12px; padding: 12px 14px;"><p style="margin: 0; font-size: 12px; color: #94A3B8;">Device</p><p style="margin: 3px 0 0; font-weight: 500; font-size: 14px;">Bound, no changes</p></div>
+</div>
+<div style="margin-top: 14px; border: 1px solid #EEF1F5; border-radius: 12px; padding: 14px;">
+<div style="display: flex; justify-content: space-between; font-size: 14px;"><span style="font-weight: 500;">Safety score</span><span style="font-weight: 600; color: #0A7AA6;">86 / 100</span></div>
+<div style="margin-top: 10px; height: 6px; border-radius: 999px; background: #EEF1F5;"><div style="width: 86%; height: 6px; border-radius: 999px; background: linear-gradient(90deg, #68CFF7, #0A7AA6);"></div></div>
+<div style="margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; font-size: 12px; color: #475569;"><span style="border: 1px solid #EEF1F5; padding: 3px 9px; border-radius: 999px;">Speeding 2%</span><span style="border: 1px solid #EEF1F5; padding: 3px 9px; border-radius: 999px;">Hard braking low</span><span style="border: 1px solid #EEF1F5; padding: 3px 9px; border-radius: 999px;">HOS compliant</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ============ FRAUD ============ -->
+<section style="background: #FFFFFF; padding: 104px 24px; border-top: 1px solid #EEF1F5;">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap-reverse; gap: 72px; align-items: center;">
+<div style="flex: 1 1 460px; min-width: 0; border: 1px solid #E6EAF0; border-radius: 18px; overflow: hidden; box-shadow: 0 1px 2px rgba(15,23,42,.04), 0 24px 48px -24px rgba(15,23,42,.18);">
+<div style="padding: 16px 22px; border-bottom: 1px solid #EEF1F5; display: flex; justify-content: space-between; align-items: center;"><span style="font-weight: 600; font-size: 15px;">Risk alerts</span><span style="font-size: 12px; color: #94A3B8;">Sample data</span></div>
+<div style="padding: 4px 22px 8px;">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid #F1F4F8;"><div><p style="margin: 0; font-weight: 500; font-size: 15px;">Same license on two profiles</p><p style="margin: 2px 0 0; font-size: 13px; color: #94A3B8;">Duplicate driver</p></div><span style="font-size: 12px; font-weight: 500; color: #B45309; background: #FFF7E6; padding: 3px 10px; border-radius: 999px; white-space: nowrap;">High</span></div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid #F1F4F8;"><div><p style="margin: 0; font-weight: 500; font-size: 15px;">ELD hours under another driver</p><p style="margin: 2px 0 0; font-size: 13px; color: #94A3B8;">Profile switching</p></div><span style="font-size: 12px; font-weight: 500; color: #B45309; background: #FFF7E6; padding: 3px 10px; border-radius: 999px; white-space: nowrap;">High</span></div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid #F1F4F8;"><div><p style="margin: 0; font-weight: 500; font-size: 15px;">Phone and truck in different states</p><p style="margin: 2px 0 0; font-size: 13px; color: #94A3B8;">Location mismatch</p></div><span style="font-size: 12px; font-weight: 500; color: #0A7AA6; background: #EAF7FD; padding: 3px 10px; border-radius: 999px; white-space: nowrap;">Review</span></div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0;"><div><p style="margin: 0; font-weight: 500; font-size: 15px;">Carriers sharing VIN and address</p><p style="margin: 2px 0 0; font-size: 13px; color: #94A3B8;">Possible chameleon carrier</p></div><span style="font-size: 12px; font-weight: 500; color: #0A7AA6; background: #EAF7FD; padding: 3px 10px; border-radius: 999px; white-space: nowrap;">Review</span></div>
+</div>
+</div>
+<div style="flex: 1 1 420px; min-width: 0;">
+<p style="margin: 0; font-size: 13px; font-weight: 500; color: #0A7AA6;">Fraud and anomaly detection</p>
+<h2 style="margin: 10px 0 0; font-size: clamp(26px, 2.6vw, 34px); font-weight: 600; line-height: 1.15; letter-spacing: -.03em;">Catch what doesn't add up, before it costs you.</h2>
+<p style="margin: 16px 0 0; max-width: 460px; font-size: 16px; line-height: 1.65; color: #475569;">Duplicate drivers, ELD switching, unplugged devices and location mismatches, pulled together so patterns stand out.</p>
+<p style="margin: 20px 0 0; display: flex; gap: 10px; align-items: flex-start; max-width: 460px; font-size: 14px; line-height: 1.55; color: #64748B;"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="flex: none; margin-top: 1px;" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8v.5"></path></svg>Every flag is a risk indicator for your team to review, not an automatic accusation.</p>
+</div>
+</div>
+</section>
+
+<!-- ============ FREIGHT (dark) ============ -->
+<section id="freight" style="background: radial-gradient(760px 460px at 100% 0%, rgba(104,207,247,.14), rgba(17,40,74,0) 70%), #163360; color: #FFFFFF; padding: 104px 24px;">
+<div style="max-width: 1200px; margin: 0 auto;">
+<div style="display: flex; flex-wrap: wrap; gap: 72px; align-items: center;">
+<div style="flex: 1 1 420px; min-width: 0;">
+<p style="margin: 0; font-size: 13px; font-weight: 500; color: #68CFF7;">Freight security</p>
+<h2 style="margin: 10px 0 0; font-size: clamp(26px, 2.6vw, 34px); font-weight: 600; line-height: 1.15; letter-spacing: -.03em;">The right driver at pickup. The right route all the way.</h2>
+<p style="margin: 16px 0 0; max-width: 460px; font-size: 16px; line-height: 1.65; color: rgba(255,255,255,.66);">AISAR confirms the assigned driver at pickup, then watches ELD status, location and route — and alerts the broker if the truck goes off course.</p>
+</div>
+<div style="flex: 1 1 460px; min-width: 0; background: #FFFFFF; color: #0F172A; border-radius: 18px; padding: 22px; box-shadow: 0 40px 80px -30px rgba(0,0,0,.6);">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px;"><div><p style="margin: 0; font-size: 12px; color: #94A3B8;">Load L-1042, sample</p><p style="margin: 2px 0 0; font-weight: 600; font-size: 16px; letter-spacing: -.01em;">Dallas, TX to Memphis, TN</p></div><span style="font-size: 12px; font-weight: 500; color: #B45309; background: #FFF7E6; padding: 4px 10px; border-radius: 999px;">Route deviation</span></div>
+<svg viewBox="0 0 440 210" role="img" aria-label="Map showing the planned route and an actual route that leaves it" style="display: block; width: 100%; height: auto; margin-top: 16px; border-radius: 12px; background: #F3F7FB;">
+<g stroke="#E3EAF2" stroke-width="1"><path d="M0 50 L440 50 M0 100 L440 100 M0 150 L440 150 M110 0 L110 210 M220 0 L220 210 M330 0 L330 210"></path></g>
+<path d="M40 170 C 120 150, 160 100, 230 96 S 350 60, 400 40" fill="none" stroke="#0A7AA6" stroke-width="4" stroke-linecap="round"></path>
+<path d="M40 170 C 120 150, 160 100, 214 98 C 250 110, 270 150, 300 170" fill="none" stroke="#D97706" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 9"></path>
+<circle cx="40" cy="170" r="8" fill="#0A7AA6" stroke="#FFFFFF" stroke-width="3"></circle>
+<circle cx="400" cy="40" r="8" fill="#11284A" stroke="#FFFFFF" stroke-width="3"></circle>
+<circle cx="300" cy="170" r="9" fill="#D97706" stroke="#FFFFFF" stroke-width="3"></circle>
+</svg>
+<div style="margin-top: 14px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; font-size: 13px;">
+<div style="border: 1px solid #EEF1F5; border-radius: 10px; padding: 10px 12px;"><p style="margin: 0; color: #94A3B8; font-size: 12px;">Driver</p><p style="margin: 2px 0 0; font-weight: 500;">Verified at pickup</p></div>
+<div style="border: 1px solid #EEF1F5; border-radius: 10px; padding: 10px 12px;"><p style="margin: 0; color: #94A3B8; font-size: 12px;">ELD</p><p style="margin: 2px 0 0; font-weight: 500;">Driving, HOS ok</p></div>
+<div style="border: 1px solid #FBE3B8; background: #FFF7E6; border-radius: 10px; padding: 10px 12px;"><p style="margin: 0; color: #B45309; font-size: 12px;">Broker</p><p style="margin: 2px 0 0; font-weight: 500; color: #78350F;">Alert sent</p></div>
+</div>
+</div>
+</div>
+<ol style="list-style: none; margin: 72px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.08); border-radius: 16px; overflow: hidden;">
+<li style="background: #173562; padding: 22px;"><span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: #68CFF7;">01</span><h3 style="margin: 10px 0 4px; font-size: 15px; font-weight: 600;">Load posted</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: rgba(255,255,255,.6);">Broker creates it and vets carriers.</p></li>
+<li style="background: #173562; padding: 22px;"><span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: #68CFF7;">02</span><h3 style="margin: 10px 0 4px; font-size: 15px; font-weight: 600;">Driver assigned</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: rgba(255,255,255,.6);">Verified driver, truck and coverage.</p></li>
+<li style="background: #173562; padding: 22px;"><span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: #68CFF7;">03</span><h3 style="margin: 10px 0 4px; font-size: 15px; font-weight: 600;">Pickup verified</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: rgba(255,255,255,.6);">Location, face match and a code.</p></li>
+<li style="background: #173562; padding: 22px;"><span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: #68CFF7;">04</span><h3 style="margin: 10px 0 4px; font-size: 15px; font-weight: 600;">Live monitoring</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: rgba(255,255,255,.6);">ELD, location, hours and speed.</p></li>
+<li style="background: #173562; padding: 22px;"><span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: #FBBF24;">05</span><h3 style="margin: 10px 0 4px; font-size: 15px; font-weight: 600;">Deviation alert</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: rgba(255,255,255,.6);">Broker notified if it goes off route.</p></li>
+</ol>
+</div>
+</section>
+
+<!-- ============ INSURANCE ============ -->
+<section style="background: #FFFFFF; padding: 104px 24px;">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 72px; align-items: center;">
+<div style="flex: 1 1 420px; min-width: 0;">
+<p style="margin: 0; font-size: 13px; font-weight: 500; color: #0A7AA6;">Insurance verification</p>
+<h2 style="margin: 10px 0 0; font-size: clamp(26px, 2.6vw, 34px); font-weight: 600; line-height: 1.15; letter-spacing: -.03em;">Coverage you can confirm, not just assume.</h2>
+<p style="margin: 16px 0 0; max-width: 460px; font-size: 16px; line-height: 1.65; color: #475569;">Agents attach policies to drivers and VINs, carriers accept them, and brokers see the live status before they book.</p>
+</div>
+<div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 10px;">
+<div class="card" style="display: flex; align-items: center; gap: 16px; border: 1px solid #E6EAF0; border-radius: 14px; padding: 18px 20px;"><span style="flex: none; width: 36px; height: 36px; border-radius: 10px; background: #EAF7FD; color: #0A7AA6; display: flex; align-items: center; justify-content: center; font-family: 'Geist Mono', monospace; font-size: 13px;">01</span><div><p style="margin: 0; font-weight: 600; font-size: 15px;">Agent submits the policy</p><p style="margin: 2px 0 0; font-size: 14px; color: #64748B;">Coverage, limits, drivers and VINs</p></div></div>
+<div class="card" style="display: flex; align-items: center; gap: 16px; border: 1px solid #E6EAF0; border-radius: 14px; padding: 18px 20px;"><span style="flex: none; width: 36px; height: 36px; border-radius: 10px; background: #EAF7FD; color: #0A7AA6; display: flex; align-items: center; justify-content: center; font-family: 'Geist Mono', monospace; font-size: 13px;">02</span><div><p style="margin: 0; font-weight: 600; font-size: 15px;">Trucking company accepts</p><p style="margin: 2px 0 0; font-size: 14px; color: #64748B;">Only then is it treated as confirmed</p></div></div>
+<div style="display: flex; align-items: center; gap: 16px; background: #11284A; color: #FFFFFF; border-radius: 14px; padding: 18px 20px; box-shadow: 0 20px 40px -20px rgba(17,40,74,.6);"><span style="flex: none; width: 36px; height: 36px; border-radius: 10px; background: #68CFF7; color: #0F172A; display: flex; align-items: center; justify-content: center; font-family: 'Geist Mono', monospace; font-size: 13px;">03</span><div><p style="margin: 0; font-weight: 600; font-size: 15px;">Broker sees confirmed coverage</p><p style="margin: 2px 0 0; font-size: 14px; color: rgba(255,255,255,.66);">Status, expiry and cancellation in one view</p></div></div>
+</div>
+</div>
+</section>
+
+<!-- ============ SECURITY / TRUST ============ -->
+<section id="security" style="background: #FFFFFF; padding: 104px 24px; border-top: 1px solid #EEF1F5;">
+<div style="max-width: 1200px; margin: 0 auto;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px;">
+<div style="max-width: 600px;">
+<p style="margin: 0; font-size: 13px; font-weight: 500; color: #0A7AA6;">Security and trust</p>
+<h2 style="margin: 10px 0 0; font-size: clamp(28px, 3vw, 40px); font-weight: 600; line-height: 1.12; letter-spacing: -.035em;">Built for the data you can't afford to get wrong.</h2>
+</div>
+<p style="margin: 0; max-width: 380px; font-size: 16px; line-height: 1.6; color: #475569;">Identity, hours and coverage are sensitive. AISAR handles them with strict controls.</p>
+</div>
+<div style="margin-top: 44px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+<div class="card" style="border: 1px solid #E6EAF0; border-radius: 16px; padding: 24px;">
+<span style="width: 40px; height: 40px; border-radius: 10px; background: #EAF7FD; display: flex; align-items: center; justify-content: center;"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#0A7AA6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg></span>
+<p style="margin: 18px 0 0; font-weight: 600; font-size: 16px; letter-spacing: -.01em;">Original ELD records, untouched</p>
+<p style="margin: 6px 0 0; font-size: 14px; line-height: 1.6; color: #64748B;">Source data stays as the ELD sent it. AISAR's scores and alerts live in a separate layer.</p>
+</div>
+<div class="card" style="border: 1px solid #E6EAF0; border-radius: 16px; padding: 24px;">
+<span style="width: 40px; height: 40px; border-radius: 10px; background: #EAF7FD; display: flex; align-items: center; justify-content: center;"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#0A7AA6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"></circle><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"></path><path d="M16 11l2 2 4-4"></path></svg></span>
+<p style="margin: 18px 0 0; font-weight: 600; font-size: 16px; letter-spacing: -.01em;">Role-based access</p>
+<p style="margin: 6px 0 0; font-size: 14px; line-height: 1.6; color: #64748B;">Drivers, carriers, brokers and agents each see only what their role allows.</p>
+</div>
+<div class="card" style="border: 1px solid #E6EAF0; border-radius: 16px; padding: 24px;">
+<span style="width: 40px; height: 40px; border-radius: 10px; background: #EAF7FD; display: flex; align-items: center; justify-content: center;"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#0A7AA6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 2"></path><circle cx="12" cy="12" r="9"></circle></svg></span>
+<p style="margin: 18px 0 0; font-weight: 600; font-size: 16px; letter-spacing: -.01em;">Full history and audit trail</p>
+<p style="margin: 6px 0 0; font-size: 14px; line-height: 1.6; color: #64748B;">See who was linked to which truck, policy and load at any point in time.</p>
+</div>
+<div class="card" style="border: 1px solid #E6EAF0; border-radius: 16px; padding: 24px;">
+<span style="width: 40px; height: 40px; border-radius: 10px; background: #EAF7FD; display: flex; align-items: center; justify-content: center;"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#0A7AA6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"></path><path d="M8.5 12l2.5 2.5 4.5-5"></path></svg></span>
+<p style="margin: 18px 0 0; font-weight: 600; font-size: 16px; letter-spacing: -.01em;">People review every flag</p>
+<p style="margin: 6px 0 0; font-size: 14px; line-height: 1.6; color: #64748B;">Risk indicators go to your team for review. Nothing is an automatic accusation.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ============ ALL FEATURES ============ -->
+<section id="features" style="background: #FFFFFF; padding: 104px 24px; border-top: 1px solid #EEF1F5;">
+<div style="max-width: 1200px; margin: 0 auto;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px;">
+<div style="max-width: 560px;">
+<p style="margin: 0; font-size: 13px; font-weight: 500; color: #0A7AA6;">Everything in one platform</p>
+<h2 style="margin: 10px 0 0; font-size: clamp(28px, 3vw, 40px); font-weight: 600; line-height: 1.12; letter-spacing: -.035em;">13 capabilities. One source of truth.</h2>
+</div>
+<a class="btn-navy" href="#contact" style="font-size: 14px; font-weight: 500; padding: 11px 18px; border-radius: 10px;">Book a walkthrough</a>
+</div>
+<div style="margin-top: 44px; display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 12px;">
+<sc-for list="{{ features }}" as="f" hint-placeholder-count="13">
+<div class="card" style="border: 1px solid #E6EAF0; border-radius: 14px; padding: 20px;">
+<p style="margin: 0; display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; letter-spacing: -.01em;"><span style="width: 6px; height: 6px; border-radius: 2px; background: #68CFF7; flex: none;"></span>{{ f.t }}</p>
+<p style="margin: 6px 0 0 16px; font-size: 14px; line-height: 1.55; color: #64748B;">{{ f.d }}</p>
+</div>
+</sc-for>
+<div style="background: #11284A; color: #FFFFFF; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px;">
+<p style="margin: 0; font-weight: 600; font-size: 15px;">See them working together</p>
+<a href="#contact" style="color: #68CFF7; font-size: 14px; font-weight: 500;">Request a demo</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ============ QUESTIONS ============ -->
+<section style="background: radial-gradient(700px 420px at 0% 0%, rgba(104,207,247,.14), rgba(22,51,96,0) 70%), #163360; color: #FFFFFF; padding: 104px 24px;">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 56px;">
+<div style="flex: 1 1 340px; min-width: 0;">
+<p style="margin: 0; font-size: 13px; font-weight: 500; color: #68CFF7;">Answers, not guesses</p>
+<h2 style="margin: 10px 0 0; font-size: clamp(28px, 3vw, 40px); font-weight: 600; line-height: 1.12; letter-spacing: -.035em;">The questions AISAR answers in seconds.</h2>
+<p style="margin: 16px 0 0; max-width: 380px; font-size: 16px; line-height: 1.65; color: rgba(255,255,255,.7);">Every one of these used to take calls, spreadsheets and guesswork.</p>
+</div>
+<ul style="flex: 1.5 1 520px; min-width: 0; margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px;">
+<sc-for list="{{ questions }}" as="q" hint-placeholder-count="7">
+<li style="display: flex; gap: 12px; align-items: flex-start; padding: 16px 18px; border-radius: 12px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); font-size: 15px; line-height: 1.45; color: rgba(255,255,255,.92);"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="flex: none; margin-top: 1px;"><circle cx="12" cy="12" r="11" fill="#68CFF7"></circle><path d="M7 12.5l3.2 3L17 9" stroke="#163360" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>{{ q }}</li>
+</sc-for>
+</ul>
+</div>
+</section>
+
+<!-- ============ ROLES ============ -->
+<section style="background: #FFFFFF; padding: 104px 24px; border-top: 1px solid #EEF1F5;">
+<div style="max-width: 1200px; margin: 0 auto;">
+<div style="text-align: center;">
+<p style="margin: 0; font-size: 13px; font-weight: 500; color: #0A7AA6;">Solutions</p>
+<h2 style="margin: 10px 0 0; font-size: clamp(28px, 3vw, 40px); font-weight: 600; line-height: 1.12; letter-spacing: -.035em;">Built for every side of the load.</h2>
+</div>
+<div role="tablist" aria-label="Roles" style="margin: 32px auto 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; padding: 4px; border-radius: 12px; border: 1px solid #E6EAF0; width: fit-content; max-width: 100%;">
+<sc-for list="{{roles}}" as="r" hint-placeholder-count="4">
+<sc-if value="{{r.isOn}}" hint-placeholder-val="{{ false }}">
+<button type="button" role="tab" aria-selected="true" onClick="{{r.pick}}" style="font: inherit; font-size: 14px; font-weight: 500; padding: 10px 18px; min-height: 44px; border-radius: 9px; border: 0; cursor: pointer; background: #11284A; color: #FFFFFF;">{{r.label}}</button>
+</sc-if>
+<sc-if value="{{r.isOff}}" hint-placeholder-val="{{ true }}">
+<button type="button" role="tab" aria-selected="false" onClick="{{r.pick}}" style="font: inherit; font-size: 14px; font-weight: 500; padding: 10px 18px; min-height: 44px; border-radius: 9px; border: 0; cursor: pointer; background: transparent; color: #64748B;">{{r.label}}</button>
+</sc-if>
+</sc-for>
+</div>
+<div style="margin-top: 28px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center; border: 1px solid #E6EAF0; border-radius: 18px; padding: 40px; box-shadow: 0 1px 2px rgba(15,23,42,.04), 0 24px 48px -28px rgba(15,23,42,.16);">
+<div style="flex: 1 1 380px; min-width: 0;">
+<h3 style="margin: 0; font-size: 24px; font-weight: 600; line-height: 1.2; letter-spacing: -.025em;">{{active.title}}</h3>
+<p style="margin: 12px 0 0; max-width: 440px; font-size: 16px; line-height: 1.65; color: #475569;">{{active.body}}</p>
+<a class="btn-navy" href="#contact" style="margin-top: 24px; display: inline-block; font-size: 14px; font-weight: 500; padding: 11px 18px; border-radius: 10px;">Talk to our team</a>
+</div>
+<ul style="flex: 1 1 380px; min-width: 0; margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+<sc-for list="{{active.points}}" as="p" hint-placeholder-count="4">
+<li style="display: flex; gap: 10px; align-items: flex-start; padding: 16px; border-radius: 12px; border: 1px solid #EEF1F5; font-size: 14px; font-weight: 500; line-height: 1.45;"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="flex: none;"><circle cx="12" cy="12" r="11" fill="#EAF7FD"></circle><path d="M7 12.5l3.2 3L17 9" stroke="#0A7AA6" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>{{p.text}}</li>
+</sc-for>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- ============ ROADMAP ============ -->
+<section id="roadmap" style="background: #FFFFFF; padding: 104px 24px; border-top: 1px solid #EEF1F5;">
+<div style="max-width: 1200px; margin: 0 auto;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px;">
+<div style="max-width: 560px;">
+<p style="margin: 0; font-size: 13px; font-weight: 500; color: #0A7AA6;">Roadmap</p>
+<h2 style="margin: 10px 0 0; font-size: clamp(28px, 3vw, 40px); font-weight: 600; line-height: 1.12; letter-spacing: -.035em;">Rolling out in eight phases.</h2>
+</div>
+<p style="margin: 0; max-width: 380px; font-size: 16px; line-height: 1.6; color: #475569;">Identity comes first. Early-access partners help shape every release after it.</p>
+</div>
+<ol style="margin: 44px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+<sc-for list="{{ phases }}" as="p" hint-placeholder-count="8">
+<li class="card" style="position: relative; border: 1px solid {{ p.bd }}; border-radius: 14px; padding: 20px; background: {{ p.bg }};">
+<div style="display: flex; justify-content: space-between; align-items: center;">
+<span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: #0A7AA6;">Phase {{ p.n }}</span>
+<sc-if value="{{ p.first }}" hint-placeholder-val="{{ false }}"><span style="font-size: 11px; font-weight: 500; color: #0A7AA6; background: #EAF7FD; padding: 2px 8px; border-radius: 999px;">Starts here</span></sc-if>
+</div>
+<p style="margin: 12px 0 0; font-weight: 600; font-size: 15px; letter-spacing: -.01em;">{{ p.t }}</p>
+<p style="margin: 6px 0 0; font-size: 14px; line-height: 1.55; color: #64748B;">{{ p.d }}</p>
+</li>
+</sc-for>
+</ol>
+</div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" style="background: #FFFFFF; padding: 104px 24px; border-top: 1px solid #EEF1F5;">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 56px;">
+<div style="flex: 1 1 320px; min-width: 0;">
+<p style="margin: 0; font-size: 13px; font-weight: 500; color: #0A7AA6;">FAQ</p>
+<h2 style="margin: 10px 0 0; font-size: clamp(28px, 3vw, 40px); font-weight: 600; line-height: 1.12; letter-spacing: -.035em;">Questions, answered.</h2>
+<p style="margin: 16px 0 0; max-width: 340px; font-size: 16px; line-height: 1.65; color: #475569;">Can't find what you need? Our team will walk you through it.</p>
+<a class="btn-navy" href="#contact" style="margin-top: 24px; display: inline-block; font-size: 14px; font-weight: 500; padding: 11px 18px; border-radius: 10px;">Contact sales</a>
+</div>
+<div style="flex: 1.6 1 520px; min-width: 0; border-top: 1px solid #E6EAF0;">
+<sc-for list="{{ faqs }}" as="f" hint-placeholder-count="6">
+<div style="border-bottom: 1px solid #E6EAF0;">
+<button type="button" aria-expanded="{{ f.exp }}" onClick="{{ f.toggle }}" style="width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 0; min-height: 44px; background: transparent; border: 0; cursor: pointer; text-align: left; font-family: Geist, Inter, sans-serif; font-size: 16px; font-weight: 500; color: #0F172A;">{{ f.q }}
+<span style="flex: none; width: 28px; height: 28px; border-radius: 50%; border: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: center; color: #0A7AA6; font-size: 16px; line-height: 1;">{{ f.sign }}</span>
+</button>
+<sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+<p style="margin: 0; padding: 0 48px 22px 0; font-size: 15px; line-height: 1.65; color: #475569;">{{ f.a }}</p>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section id="contact" style="background: #FFFFFF; padding: 0 24px 104px;">
+<div style="max-width: 1200px; margin: 0 auto; position: relative; overflow: hidden; border-radius: 22px; color: #FFFFFF; background: radial-gradient(520px 320px at 10% 100%, rgba(104,207,247,.22), rgba(17,40,74,0) 70%), radial-gradient(520px 320px at 90% 0%, rgba(66,110,180,.35), rgba(17,40,74,0) 70%), #163360;">
+<svg viewBox="0 0 1240 420" preserveAspectRatio="xMaxYMax slice" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: .7;"><path d="M1010 0 L1050 0 L1240 420 L820 420 Z" fill="#0C2140"></path><path d="M1030 20 L1030 70 M1030 120 L1030 200 M1030 260 L1030 380" stroke="#68CFF7" stroke-opacity=".7" stroke-width="5" stroke-linecap="round"></path></svg>
+<div style="position: relative; padding: 56px 48px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
+<div style="flex: 1 1 420px; min-width: 0;">
+<h2 style="margin: 0; font-size: clamp(26px, 2.8vw, 36px); font-weight: 600; line-height: 1.12; letter-spacing: -.035em;">See AISAR on your own fleet.</h2>
+<p style="margin: 12px 0 0; max-width: 420px; font-size: 16px; line-height: 1.6; color: rgba(255,255,255,.7);">Tell us how you work and we'll set up a walkthrough around it.</p>
+</div>
+<form aria-label="Request a demo" style="flex: 1 1 380px; min-width: 0; background: #FFFFFF; color: #0F172A; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 30px 60px -30px rgba(0,0,0,.6);">
+<div style="display: flex; flex-direction: column; gap: 6px;"><label for="email" style="font-size: 13px; font-weight: 500; color: #475569;">Work email</label><input id="email" type="email" placeholder="you@company.com" style="font-size: 15px; padding: 12px 14px; border-radius: 10px; border: 1px solid #E2E8F0; min-height: 46px; color: #0F172A;"></div>
+<div style="display: flex; flex-direction: column; gap: 6px;"><label for="role" style="font-size: 13px; font-weight: 500; color: #475569;">I am a</label><select id="role" style="font-size: 15px; padding: 12px 14px; border-radius: 10px; border: 1px solid #E2E8F0; min-height: 46px; background: #FFFFFF; color: #0F172A;"><option>Trucking company</option><option>Freight broker</option><option>Insurance agent</option><option>Driver</option></select></div>
+<button type="button" class="btn-sky" style="font-family: Geist, Inter, sans-serif; font-size: 15px; font-weight: 500; padding: 12px; min-height: 46px; border-radius: 10px; border: 0; cursor: pointer;">Request a demo</button>
+</form>
+</div>
+</div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer style="background: #0E2342; color: #A9B6CF;">
+<div style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 0;">
+<div style="display: flex; flex-wrap: wrap; gap: 56px; justify-content: space-between;">
+<div style="flex: 1 1 300px; max-width: 360px;">
+<div style="display: flex; align-items: center; gap: 10px;">
+<svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#68CFF7"></rect><path d="M27.5 14 L36.5 14 L52 54 L12 54 Z" fill="#0E2342"></path><rect x="30.6" y="42" width="2.8" height="9" rx="1" fill="#68CFF7"></rect><rect x="31" y="30" width="2" height="7" rx="1" fill="#68CFF7"></rect></svg>
+<span style="font-weight: 600; font-size: 17px; letter-spacing: .12em; color: #FFFFFF;">AISAR</span>
+</div>
+<p style="margin: 18px 0 0; font-size: 14px; line-height: 1.65;">Safety, identity verification and freight security for the trucking industry.</p>
+<form aria-label="Product updates" style="margin-top: 24px;">
+<label for="news" style="display: block; font-size: 13px; font-weight: 500; color: #FFFFFF;">Get product updates</label>
+<div style="margin-top: 10px; display: flex; gap: 8px; padding: 4px; border-radius: 12px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12);">
+<input id="news" type="email" placeholder="you@company.com" style="flex: 1; min-width: 0; padding: 10px 12px; border: 0; background: transparent; color: #FFFFFF; font-size: 14px;">
+<button type="button" class="btn-sky" style="flex: none; border: 0; cursor: pointer; font-family: Geist, Inter, sans-serif; font-size: 14px; font-weight: 500; padding: 9px 14px; border-radius: 9px;">Subscribe</button>
+</div>
+</form>
+</div>
+<div style="flex: 2 1 560px; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 32px;">
+<div style="display: flex; flex-direction: column; gap: 11px;"><p style="margin: 0 0 4px; color: #FFFFFF; font-weight: 500; font-size: 14px;">Platform</p><a class="foot-a" href="#platform">Driver identity</a><a class="foot-a" href="#features">ELD integration</a><a class="foot-a" href="#platform">Fraud detection</a><a class="foot-a" href="#freight">Freight security</a><a class="foot-a" href="#features">Insurance verification</a></div>
+<div style="display: flex; flex-direction: column; gap: 11px;"><p style="margin: 0 0 4px; color: #FFFFFF; font-weight: 500; font-size: 14px;">Solutions</p><a class="foot-a" href="#solutions">Trucking companies</a><a class="foot-a" href="#solutions">Freight brokers</a><a class="foot-a" href="#solutions">Insurance agents</a><a class="foot-a" href="#solutions">Drivers</a></div>
+<div style="display: flex; flex-direction: column; gap: 11px;"><p style="margin: 0 0 4px; color: #FFFFFF; font-weight: 500; font-size: 14px;">Resources</p><a class="foot-a" href="#roadmap">Roadmap</a><a class="foot-a" href="#faq">FAQ</a><a class="foot-a" href="#security">Security</a><a class="foot-a" href="#contact">Request a demo</a></div>
+<div style="display: flex; flex-direction: column; gap: 11px;"><p style="margin: 0 0 4px; color: #FFFFFF; font-weight: 500; font-size: 14px;">Company</p><a class="foot-a" href="#top">About</a><a class="foot-a" href="#contact">Contact sales</a><a class="foot-a" href="#contact">[YOUR EMAIL]</a></div>
+</div>
+</div>
+<div style="margin-top: 56px; padding: 22px 0; border-top: 1px solid rgba(255,255,255,.08); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 13px;">
+<span>© 2026 AISAR. All rights reserved.</span>
+<div style="display: flex; flex-wrap: wrap; gap: 24px;"><a class="foot-a" href="#top" style="font-size: 13px;">Privacy policy</a><a class="foot-a" href="#top" style="font-size: 13px;">Terms of service</a><a class="foot-a" href="#security" style="font-size: 13px;">Security</a><a class="foot-a" href="#top" style="font-size: 13px;">Cookie settings</a></div>
+<div style="display: flex; gap: 8px;">
+<span style="font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid rgba(255,255,255,.14);">iOS</span>
+<span style="font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid rgba(255,255,255,.14);">Android</span>
+<span style="font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid rgba(255,255,255,.14);">Web</span>
+</div>
+</div>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":9000}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { role: 0, faq: 0 };
+}
+renderVals() {
+const data = [
+{ label: 'Trucking companies', title: 'Run a cleaner, safer fleet.', body: 'See which drivers are verified, spot ELD drivers who haven’t registered, and keep compliance, trucks and VINs in one place.', points: ['Verified vs. unregistered drivers', 'License, medical and drug-test dates', 'Trucks, VINs, maintenance and fuel', 'Driver scores, HOS and violations'] },
+{ label: 'Freight brokers', title: 'Vet carriers with real data.', body: 'Check drivers, safety, inspections and insurance before you assign a load, then follow it to delivery.', points: ['Carrier completeness score', 'Confirmed insurance by driver and VIN', 'Verified pickup with face match and code', 'Route deviation alerts in transit'] },
+{ label: 'Drivers', title: 'A verified record that is yours.', body: 'Prove who you are once and build a safety history that follows you across trucks, companies and loads.', points: ['Quick license and face verification', 'Your safety score and history', 'Assigned truck and freight in one app', 'Faster identity checks at pickup'] },
+{ label: 'Insurance agents', title: 'Coverage everyone can trust.', body: 'Attach policies to the right drivers and VINs so carriers and brokers rely on coverage that is current.', points: ['Policies linked to drivers and VINs', 'Carrier review and acceptance', 'Expiry and cancellation status', 'Visibility for authorized brokers'] }
+];
+const i = this.state.role;
+const FAQ = [
+{ q: 'Does AISAR change our ELD data?', a: 'No. Original ELD records are kept exactly as received. AISAR keeps its own scores, alerts and history in a separate layer.' },
+{ q: 'Is a fraud flag an accusation?', a: 'No. Every flag is a risk indicator that goes to your team for review. People make the call.' },
+{ q: 'What does a driver need to get verified?', a: 'A phone, a driver\u2019s license and a quick selfie. AISAR checks the license, matches the face and links the driver to their ELD profile.' },
+{ q: 'Who can see insurance details?', a: 'Agents submit policies, the trucking company accepts them, and only authorized brokers see the confirmed coverage, limits and status.' },
+{ q: 'Which ELD providers are supported?', a: 'AISAR connects to supported ELD providers through their APIs, with more providers on the roadmap. Ask us about yours.' },
+{ q: 'How do we get access?', a: 'AISAR is rolling out in phases. Request a demo to join early access and help shape what ships next.' }
+];
+const fo = this.state.faq;
+const PH = [
+{ t: 'Foundation & identity', d: 'Company sign-up, ELD connection, driver onboarding and verification.' },
+{ t: 'Safety & monitoring', d: 'HOS, speeding, hard braking, location matching and scoring.' },
+{ t: 'Company management', d: 'Compliance, expiries, VINs, maintenance and the insurance flow.' },
+{ t: 'Freight broker', d: 'Carrier vetting, loads, pickup verification and live tracking.' },
+{ t: 'Insurance', d: 'Agent onboarding, policies, driver and VIN coverage.' },
+{ t: 'Risk & intelligence', d: 'Fraud engine, ghost and duplicate driver detection.' },
+{ t: 'Integrations', d: 'FMCSA / SAFER, carrier software and more ELD providers.' },
+{ t: 'Admin', d: 'Configuration, roles, reports, analytics and billing.' }
+];
+return {
+questions: [
+'Is this really the driver who should be in this truck?',
+'Is the driver properly linked to the ELD profile?',
+'Does the driver\u2019s location match the truck?',
+'Is the carrier\u2019s information complete and consistent?',
+'Is insurance actually tied to this driver and VIN?',
+'Is the shipment following the expected route?',
+'Has this driver, truck, carrier or broker appeared in past incidents?'
+],
+phases: PH.map((x, k) => ({ n: String(k + 1), t: x.t, d: x.d, first: k === 0, bg: k === 0 ? '#F7FCFF' : '#FFFFFF', bd: k === 0 ? '#BEE6F8' : '#E6EAF0' })),
+faqs: FAQ.map((x, k) => ({ q: x.q, a: x.a, open: k === fo, exp: k === fo ? 'true' : 'false', sign: k === fo ? '\u2212' : '+', toggle: () => this.setState({ faq: k === fo ? -1 : k }) })),
+features: [
+{ t: 'Driver registration & identity', d: 'License, face, phone and ELD in one profile.' },
+{ t: 'ELD integration', d: 'HOS, speed, location, mileage and VIN.' },
+{ t: 'Safety monitoring & scoring', d: 'Scores from real driving behavior.' },
+{ t: 'Fraud & anomaly detection', d: 'Duplicate drivers, switching and mismatches.' },
+{ t: 'Trucking company management', d: 'Drivers, compliance, trucks and maintenance.' },
+{ t: 'Broker & carrier vetting', d: 'Completeness scores and risk indicators.' },
+{ t: 'Freight & load management', d: 'Post, request and assign loads.' },
+{ t: 'Insurance management', d: 'Coverage confirmed per driver and VIN.' },
+{ t: 'Location & route monitoring', d: 'Phone vs. ELD and route deviations.' },
+{ t: 'Incident & freight risk intelligence', d: 'Cargo theft linked to who was involved.' },
+{ t: 'External data integrations', d: 'ELD providers and approved sources.' },
+{ t: 'Admin dashboard & analytics', d: 'Platform-wide totals and trends.' },
+{ t: 'Notifications & risk alerts', d: 'The right people, alerted at the right time.' }
+],
+roles: data.map((d, k) => ({ label: d.label, isOn: k === i, isOff: k !== i, pick: () => this.setState({ role: k }) })),
+active: { title: data[i].title, body: data[i].body, points: data[i].points.map((t) => ({ text: t })) }
+};
+}
+}
+</script>
+</body>
+</html>
