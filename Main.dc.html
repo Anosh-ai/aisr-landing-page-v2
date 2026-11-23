@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AISAR — Safety and verification platform for trucking</title>
 <script src="./vendor/react.js"></script>
 <script src="./vendor/react-dom.js"></script>
@@ -15,6 +16,7 @@
 <style>
 body{margin:0;background:#FFFFFF}
 *{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 a{color:#0A7AA6;text-decoration:none}
 a:hover{color:#075E80}
 a:focus-visible,button:focus-visible{outline:2px solid #68CFF7;outline-offset:3px;border-radius:8px}
@@ -35,22 +37,61 @@ a:focus-visible,button:focus-visible{outline:2px solid #68CFF7;outline-offset:3p
 .foot-a{color:#A9B6CF;font-size:14px;transition:color .15s ease}
 .foot-a:hover{color:#FFFFFF}
 .phone{margin-left:-64px;margin-top:88px}
-@media (max-width: 760px){.phone{margin-left:0;margin-top:20px}}
 @media (max-width: 960px){.nav-links{display:none !important}}
 @keyframes drive{from{transform:translateX(0)}to{transform:translateX(-120px)}}
 .lanes{animation:drive 1.4s linear infinite}
 @media (prefers-reduced-motion: reduce){.lanes{animation:none}}
 input,select{font:inherit}
 input:focus,select:focus{outline:2px solid #68CFF7;outline-offset:1px}
+img,svg,video{max-width:100%;height:auto}
+@media (max-width: 900px){
+.hero-inner{padding:56px 20px 48px !important;gap:36px !important}
+.hero-visual{justify-content:center;gap:20px}
+.phone{margin-left:0;margin-top:24px;flex:0 0 auto !important;width:min(220px,100%);max-width:220px}
+.section-pad{padding-top:64px !important;padding-bottom:64px !important;padding-left:20px !important;padding-right:20px !important}
+.section-pad-tight{padding-left:20px !important;padding-right:20px !important}
+#contact.section-pad-tight{padding-bottom:64px !important}
+.grid-pair{grid-template-columns:1fr !important}
+.stats-row{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+.stats-row > div{border-left:0 !important;border-top:1px solid #EEF1F5}
+.stats-row > div:nth-child(-n+2){border-top:0}
+.stats-row > div:nth-child(odd){border-right:1px solid #EEF1F5}
+.freight-stats{grid-template-columns:1fr !important}
+.role-panel{padding:24px !important;gap:28px !important}
+.cta-inner{padding:36px 24px !important}
+.cta-shell{border-radius:18px !important}
+.audience-row{padding:28px 20px !important}
+.features-head{align-items:flex-start !important}
+.tab-row{width:100% !important;justify-content:stretch}
+.tab-row button{flex:1 1 auto;min-width:calc(50% - 4px)}
+}
+@media (max-width: 600px){
+.site-nav{padding:12px 16px !important;gap:12px !important}
+.nav-signin{display:none !important}
+.nav-demo{margin-left:0 !important;padding:8px 12px !important;font-size:13px !important;white-space:nowrap}
+.hero-inner{padding:40px 16px 36px !important;gap:28px !important}
+.hero-eyebrow{flex-wrap:wrap;max-width:100%}
+.hero-ctas a{flex:1 1 auto;text-align:center;justify-content:center}
+.section-pad{padding-top:52px !important;padding-bottom:52px !important;padding-left:16px !important;padding-right:16px !important}
+.section-pad-tight{padding-left:16px !important;padding-right:16px !important}
+#contact.section-pad-tight{padding-bottom:52px !important}
+.role-panel{padding:18px !important}
+.cta-inner{padding:28px 16px !important}
+.cta-shell{margin:0 -4px}
+.footer-pad{padding:48px 16px 0 !important}
+.footer-meta{flex-direction:column;align-items:flex-start !important}
+.phone{margin-left:auto;margin-right:auto}
+.truck-art{min-height:160px !important}
+}
 </style>
 </helmet>
 <div style="font-family: Geist, Inter, system-ui, sans-serif; color: #0F172A; font-size: 16px; background: #FFFFFF; -webkit-font-smoothing: antialiased; width: 100%; overflow: hidden;">
 
 <!-- ============ NAV ============ -->
 <header style="position: sticky; top: 0; z-index: 50; background: rgba(22,51,96,.88); backdrop-filter: saturate(160%) blur(14px); -webkit-backdrop-filter: saturate(160%) blur(14px); border-bottom: 1px solid rgba(255,255,255,.08);">
-<div style="max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
-<div style="display: flex; align-items: center; gap: 40px;">
-<a href="#top" aria-label="AISAR home" style="display: flex; align-items: center; gap: 10px; color: #FFFFFF;">
+<div class="site-nav" style="max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+<div style="display: flex; align-items: center; gap: 40px; min-width: 0;">
+<a href="#top" aria-label="AISAR home" style="display: flex; align-items: center; gap: 10px; color: #FFFFFF; flex: none;">
 <svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#68CFF7"></rect><path d="M27.5 14 L36.5 14 L52 54 L12 54 Z" fill="#163360"></path><rect x="30.6" y="42" width="2.8" height="9" rx="1" fill="#68CFF7"></rect><rect x="31" y="30" width="2" height="7" rx="1" fill="#68CFF7"></rect><rect x="31.3" y="20" width="1.4" height="5" rx="0.7" fill="#68CFF7"></rect></svg>
 <span style="font-weight: 600; font-size: 17px; letter-spacing: .12em;">AISAR</span>
 </a>
@@ -62,11 +103,11 @@ input:focus,select:focus{outline:2px solid #68CFF7;outline-offset:1px}
 <a class="nav-a nav-pill" href="#roadmap">Roadmap</a>
 </nav>
 </div>
-<div style="display: flex; align-items: center; gap: 6px;">
+<div style="display: flex; align-items: center; gap: 6px; flex: none;">
 <a class="nav-a nav-pill hide-sm" href="#contact">Contact sales</a>
 <span class="hide-sm" aria-hidden="true" style="width: 1px; height: 18px; background: rgba(255,255,255,.16); margin: 0 6px;"></span>
-<a class="nav-a nav-pill" href="#contact">Sign in</a>
-<a class="btn-sky" href="#contact" style="margin-left: 4px; font-size: 14px; font-weight: 500; padding: 9px 16px; border-radius: 9px;">Request a demo</a>
+<a class="nav-a nav-pill nav-signin" href="#contact">Sign in</a>
+<a class="btn-sky nav-demo" href="#contact" style="margin-left: 4px; font-size: 14px; font-weight: 500; padding: 9px 16px; border-radius: 9px;">Request a demo</a>
 </div>
 </div>
 </header>
@@ -74,24 +115,24 @@ input:focus,select:focus{outline:2px solid #68CFF7;outline-offset:1px}
 <!-- ============ HERO ============ -->
 <section id="top" style="position: relative; overflow: hidden; color: #FFFFFF; background: radial-gradient(820px 480px at 88% 0%, rgba(104,207,247,.16), rgba(22,51,96,0) 70%), radial-gradient(680px 520px at 0% 100%, rgba(104,207,247,.10), rgba(22,51,96,0) 70%), #163360;">
 <div aria-hidden="true" style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.07) 1px, transparent 1px); background-size: 28px 28px; mask-image: linear-gradient(180deg, rgba(0,0,0,.9), rgba(0,0,0,0) 85%); -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,.9), rgba(0,0,0,0) 85%);"></div>
-<div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 88px 24px 72px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center;">
+<div class="hero-inner" style="position: relative; max-width: 1200px; margin: 0 auto; padding: 88px 24px 72px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center;">
 <div style="flex: 1 1 440px; min-width: 0;">
-<p style="margin: 0; display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,.82); background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); padding: 5px 12px 5px 5px; border-radius: 999px;"><span style="font-size: 12px; font-weight: 600; color: #0F172A; background: #68CFF7; padding: 3px 9px; border-radius: 999px;">Early access</span>For carriers, brokers and insurers</p>
-<h1 style="margin: 22px 0 0; max-width: 560px; font-weight: 600; font-size: clamp(36px, 4.2vw, 54px); line-height: 1.06; letter-spacing: -.04em; color: #FFFFFF;">The safety and verification platform <span style="color: #68CFF7;">for trucking.</span></h1>
+<p class="hero-eyebrow" style="margin: 0; display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,.82); background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); padding: 5px 12px 5px 5px; border-radius: 999px;"><span style="font-size: 12px; font-weight: 600; color: #0F172A; background: #68CFF7; padding: 3px 9px; border-radius: 999px;">Early access</span>For carriers, brokers and insurers</p>
+<h1 style="margin: 22px 0 0; max-width: 560px; font-weight: 600; font-size: clamp(32px, 8vw, 54px); line-height: 1.06; letter-spacing: -.04em; color: #FFFFFF;">The safety and verification platform <span style="color: #68CFF7;">for trucking.</span></h1>
 <p style="margin: 20px 0 0; max-width: 420px; font-size: 17px; line-height: 1.6; color: rgba(255,255,255,.66);">One verified record for every driver, truck, policy and load.</p>
-<div style="margin-top: 32px; display: flex; flex-wrap: wrap; gap: 10px;">
-<a class="btn-sky" href="#contact" style="font-size: 15px; font-weight: 500; padding: 12px 20px; border-radius: 10px; box-shadow: 0 10px 30px -10px rgba(104,207,247,.6);">Request a demo</a>
-<a class="btn-ghost" href="#platform" style="font-size: 15px; font-weight: 500; padding: 12px 20px; border-radius: 10px;">Explore the platform</a>
+<div class="hero-ctas" style="margin-top: 32px; display: flex; flex-wrap: wrap; gap: 10px;">
+<a class="btn-sky" href="#contact" style="display: inline-flex; align-items: center; font-size: 15px; font-weight: 500; padding: 12px 20px; border-radius: 10px; box-shadow: 0 10px 30px -10px rgba(104,207,247,.6);">Request a demo</a>
+<a class="btn-ghost" href="#platform" style="display: inline-flex; align-items: center; font-size: 15px; font-weight: 500; padding: 12px 20px; border-radius: 10px;">Explore the platform</a>
 </div>
 </div>
 
-<div style="flex: 1 1 560px; min-width: 0; display: flex; flex-wrap: wrap; align-items: flex-start;">
-<div style="flex: 1 1 400px; min-width: 0; background: #FFFFFF; color: #0F172A; border-radius: 16px; overflow: hidden; box-shadow: 0 0 0 1px rgba(255,255,255,.08), 0 40px 80px -30px rgba(0,0,0,.6);">
+<div class="hero-visual" style="flex: 1 1 560px; min-width: 0; display: flex; flex-wrap: wrap; align-items: flex-start;">
+<div style="flex: 1 1 280px; min-width: 0; background: #FFFFFF; color: #0F172A; border-radius: 16px; overflow: hidden; box-shadow: 0 0 0 1px rgba(255,255,255,.08), 0 40px 80px -30px rgba(0,0,0,.6);">
 <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; border-bottom: 1px solid #EEF1F5;">
 <span style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #16A34A;"></span>Fleet overview</span>
 <span style="font-size: 12px; color: #94A3B8;">Sample data</span>
 </div>
-<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-bottom: 1px solid #EEF1F5;">
+<div class="stats-row" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-bottom: 1px solid #EEF1F5;">
 <div style="padding: 14px 18px;"><p style="margin: 0; font-size: 12px; color: #64748B;">Verified</p><p style="margin: 4px 0 0; font-size: 22px; font-weight: 600; letter-spacing: -.03em;">248</p></div>
 <div style="padding: 14px 18px; border-left: 1px solid #EEF1F5;"><p style="margin: 0; font-size: 12px; color: #64748B;">In transit</p><p style="margin: 4px 0 0; font-size: 22px; font-weight: 600; letter-spacing: -.03em;">36</p></div>
 <div style="padding: 14px 18px; border-left: 1px solid #EEF1F5;"><p style="margin: 0; font-size: 12px; color: #64748B;">Pending</p><p style="margin: 4px 0 0; font-size: 22px; font-weight: 600; letter-spacing: -.03em;">12</p></div>
@@ -135,7 +176,7 @@ input:focus,select:focus{outline:2px solid #68CFF7;outline-offset:1px}
 <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,.85); background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); padding: 8px 14px; border-radius: 999px;"><span style="width: 6px; height: 6px; border-radius: 50%; background: #22C55E;"></span>Insurance active</span>
 <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,.85); background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); padding: 8px 14px; border-radius: 999px;"><span style="width: 6px; height: 6px; border-radius: 50%; background: #68CFF7;"></span>On planned route</span>
 </div>
-<svg viewBox="0 0 1440 340" preserveAspectRatio="xMidYMax slice" role="img" aria-label="An AISAR-branded semi truck driving on a highway" style="display: block; width: 100%; height: auto; min-height: 220px;">
+<svg class="truck-art" viewBox="0 0 1440 340" preserveAspectRatio="xMidYMax slice" role="img" aria-label="An AISAR-branded semi truck driving on a highway" style="display: block; width: 100%; height: auto; min-height: 220px;">
 <path d="M0 230 C 180 170, 320 200, 460 180 S 760 140, 920 175 S 1240 160, 1440 190 L1440 260 L0 260 Z" fill="#1A3A66"></path>
 <path d="M0 245 C 220 205, 420 230, 640 212 S 1040 200, 1440 222 L1440 260 L0 260 Z" fill="#204678"></path>
 <rect x="0" y="256" width="1440" height="84" fill="#0C2140"></rect>
@@ -169,7 +210,7 @@ input:focus,select:focus{outline:2px solid #68CFF7;outline-offset:1px}
 
 <!-- ============ ROLE STRIP ============ -->
 <section id="solutions" style="background: #163360; color: #FFFFFF; border-top: 1px solid rgba(255,255,255,.06);">
-<div style="max-width: 1200px; margin: 0 auto; padding: 36px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 24px;">
+<div class="audience-row" style="max-width: 1200px; margin: 0 auto; padding: 36px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 24px;">
 <div style="display: flex; gap: 14px; align-items: center;"><span style="flex: none; width: 40px; height: 40px; border-radius: 10px; background: rgba(104,207,247,.12); display: flex; align-items: center; justify-content: center;"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#68CFF7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="12" height="9" rx="1"></rect><path d="M14 10h4l3 3v3h-7z"></path><circle cx="6" cy="18" r="2"></circle><circle cx="17" cy="18" r="2"></circle></svg></span><div><p style="margin: 0; font-weight: 600; font-size: 15px;">Trucking companies</p><p style="margin: 2px 0 0; font-size: 13px; color: #A9B6CF;">Drivers, trucks and compliance</p></div></div>
 <div style="display: flex; gap: 14px; align-items: center;"><span style="flex: none; width: 40px; height: 40px; border-radius: 10px; background: rgba(104,207,247,.12); display: flex; align-items: center; justify-content: center;"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#68CFF7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4z"></path><path d="M3 7v10l9 4 9-4V7"></path><path d="M12 11v10"></path></svg></span><div><p style="margin: 0; font-weight: 600; font-size: 15px;">Freight brokers</p><p style="margin: 2px 0 0; font-size: 13px; color: #A9B6CF;">Carrier vetting and load tracking</p></div></div>
 <div style="display: flex; gap: 14px; align-items: center;"><span style="flex: none; width: 40px; height: 40px; border-radius: 10px; background: rgba(104,207,247,.12); display: flex; align-items: center; justify-content: center;"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#68CFF7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"></path></svg></span><div><p style="margin: 0; font-weight: 600; font-size: 15px;">Drivers</p><p style="margin: 2px 0 0; font-size: 13px; color: #A9B6CF;">A verified safety record</p></div></div>
@@ -178,7 +219,7 @@ input:focus,select:focus{outline:2px solid #68CFF7;outline-offset:1px}
 </section>
 
 <!-- ============ INTEGRATIONS ============ -->
-<section aria-label="Integrations" style="background: #FFFFFF; padding: 44px 24px; border-bottom: 1px solid #EEF1F5;">
+<section class="section-pad-tight" aria-label="Integrations" style="background: #FFFFFF; padding: 44px 24px; border-bottom: 1px solid #EEF1F5;">
 <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 40px;">
 <p style="margin: 0; font-size: 14px; color: #64748B; max-width: 220px; line-height: 1.5;">Connects with the systems your fleet already runs</p>
 <div style="flex: 1 1 640px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 18px 28px;">
@@ -193,13 +234,13 @@ input:focus,select:focus{outline:2px solid #68CFF7;outline-offset:1px}
 </section>
 
 <!-- ============ PROBLEM / SOLUTION ============ -->
-<section id="platform" style="background: #FFFFFF; padding: 104px 24px;">
+<section id="platform" class="section-pad" style="background: #FFFFFF; padding: 104px 24px;">
 <div style="max-width: 1200px; margin: 0 auto;">
 <div style="text-align: center; max-width: 640px; margin: 0 auto;">
 <p style="margin: 0; font-size: 13px; font-weight: 500; color: #0A7AA6;">Why AISAR</p>
 <h2 style="margin: 10px 0 0; font-size: clamp(28px, 3vw, 40px); font-weight: 600; line-height: 1.12; letter-spacing: -.035em;">Stop checking five systems to trust one load.</h2>
 </div>
-<div style="margin-top: 48px; display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px;">
+<div class="grid-pair" style="margin-top: 48px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 20px;">
 <div style="border: 1px solid #E6EAF0; border-radius: 18px; padding: 32px;">
 <p style="margin: 0; font-size: 13px; font-weight: 500; color: #94A3B8;">Today</p>
 <h3 style="margin: 6px 0 0; font-size: 20px; font-weight: 600; letter-spacing: -.02em;">Disconnected records</h3>
@@ -225,7 +266,7 @@ input:focus,select:focus{outline:2px solid #68CFF7;outline-offset:1px}
 </section>
 
 <!-- ============ IDENTITY ============ -->
-<section style="background: #FFFFFF; padding: 104px 24px; border-top: 1px solid #EEF1F5;">
+<section class="section-pad" style="background: #FFFFFF; padding: 104px 24px; border-top: 1px solid #EEF1F5;">
 <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 72px; align-items: center;">
 <div style="flex: 1 1 420px; min-width: 0;">
 <p style="margin: 0; font-size: 13px; font-weight: 500; color: #0A7AA6;">Driver identity and ELD</p>
@@ -259,7 +300,7 @@ input:focus,select:focus{outline:2px solid #68CFF7;outline-offset:1px}
 </section>
 
 <!-- ============ FRAUD ============ -->
-<section style="background: #FFFFFF; padding: 104px 24px; border-top: 1px solid #EEF1F5;">
+<section class="section-pad" style="background: #FFFFFF; padding: 104px 24px; border-top: 1px solid #EEF1F5;">
 <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap-reverse; gap: 72px; align-items: center;">
 <div style="flex: 1 1 460px; min-width: 0; border: 1px solid #E6EAF0; border-radius: 18px; overflow: hidden; box-shadow: 0 1px 2px rgba(15,23,42,.04), 0 24px 48px -24px rgba(15,23,42,.18);">
 <div style="padding: 16px 22px; border-bottom: 1px solid #EEF1F5; display: flex; justify-content: space-between; align-items: center;"><span style="font-weight: 600; font-size: 15px;">Risk alerts</span><span style="font-size: 12px; color: #94A3B8;">Sample data</span></div>
@@ -280,7 +321,7 @@ input:focus,select:focus{outline:2px solid #68CFF7;outline-offset:1px}
 </section>
 
 <!-- ============ FREIGHT (dark) ============ -->
-<section id="freight" style="background: radial-gradient(760px 460px at 100% 0%, rgba(104,207,247,.14), rgba(17,40,74,0) 70%), #163360; color: #FFFFFF; padding: 104px 24px;">
+<section id="freight" class="section-pad" style="background: radial-gradient(760px 460px at 100% 0%, rgba(104,207,247,.14), rgba(17,40,74,0) 70%), #163360; color: #FFFFFF; padding: 104px 24px;">
 <div style="max-width: 1200px; margin: 0 auto;">
 <div style="display: flex; flex-wrap: wrap; gap: 72px; align-items: center;">
 <div style="flex: 1 1 420px; min-width: 0;">
@@ -298,14 +339,14 @@ input:focus,select:focus{outline:2px solid #68CFF7;outline-offset:1px}
 <circle cx="400" cy="40" r="8" fill="#11284A" stroke="#FFFFFF" stroke-width="3"></circle>
 <circle cx="300" cy="170" r="9" fill="#D97706" stroke="#FFFFFF" stroke-width="3"></circle>
 </svg>
-<div style="margin-top: 14px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; font-size: 13px;">
+<div class="freight-stats" style="margin-top: 14px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; font-size: 13px;">
 <div style="border: 1px solid #EEF1F5; border-radius: 10px; padding: 10px 12px;"><p style="margin: 0; color: #94A3B8; font-size: 12px;">Driver</p><p style="margin: 2px 0 0; font-weight: 500;">Verified at pickup</p></div>
 <div style="border: 1px solid #EEF1F5; border-radius: 10px; padding: 10px 12px;"><p style="margin: 0; color: #94A3B8; font-size: 12px;">ELD</p><p style="margin: 2px 0 0; font-weight: 500;">Driving, HOS ok</p></div>
 <div style="border: 1px solid #FBE3B8; background: #FFF7E6; border-radius: 10px; padding: 10px 12px;"><p style="margin: 0; color: #B45309; font-size: 12px;">Broker</p><p style="margin: 2px 0 0; font-weight: 500; color: #78350F;">Alert sent</p></div>
 </div>
 </div>
 </div>
-<ol style="list-style: none; margin: 72px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.08); border-radius: 16px; overflow: hidden;">
+<ol style="list-style: none; margin: 72px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); gap: 1px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.08); border-radius: 16px; overflow: hidden;">
 <li style="background: #173562; padding: 22px;"><span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: #68CFF7;">01</span><h3 style="margin: 10px 0 4px; font-size: 15px; font-weight: 600;">Load posted</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: rgba(255,255,255,.6);">Broker creates it and vets carriers.</p></li>
 <li style="background: #173562; padding: 22px;"><span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: #68CFF7;">02</span><h3 style="margin: 10px 0 4px; font-size: 15px; font-weight: 600;">Driver assigned</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: rgba(255,255,255,.6);">Verified driver, truck and coverage.</p></li>
 <li style="background: #173562; padding: 22px;"><span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: #68CFF7;">03</span><h3 style="margin: 10px 0 4px; font-size: 15px; font-weight: 600;">Pickup verified</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: rgba(255,255,255,.6);">Location, face match and a code.</p></li>
@@ -316,7 +357,7 @@ input:focus,select:focus{outline:2px solid #68CFF7;outline-offset:1px}
 </section>
 
 <!-- ============ INSURANCE ============ -->
-<section style="background: #FFFFFF; padding: 104px 24px;">
+<section class="section-pad" style="background: #FFFFFF; padding: 104px 24px;">
 <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 72px; align-items: center;">
 <div style="flex: 1 1 420px; min-width: 0;">
 <p style="margin: 0; font-size: 13px; font-weight: 500; color: #0A7AA6;">Insurance verification</p>
@@ -332,7 +373,7 @@ input:focus,select:focus{outline:2px solid #68CFF7;outline-offset:1px}
 </section>
 
 <!-- ============ SECURITY / TRUST ============ -->
-<section id="security" style="background: #FFFFFF; padding: 104px 24px; border-top: 1px solid #EEF1F5;">
+<section id="security" class="section-pad" style="background: #FFFFFF; padding: 104px 24px; border-top: 1px solid #EEF1F5;">
 <div style="max-width: 1200px; margin: 0 auto;">
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px;">
 <div style="max-width: 600px;">
@@ -341,7 +382,7 @@ input:focus,select:focus{outline:2px solid #68CFF7;outline-offset:1px}
 </div>
 <p style="margin: 0; max-width: 380px; font-size: 16px; line-height: 1.6; color: #475569;">Identity, hours and coverage are sensitive. AISAR handles them with strict controls.</p>
 </div>
-<div style="margin-top: 44px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+<div style="margin-top: 44px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 12px;">
 <div class="card" style="border: 1px solid #E6EAF0; border-radius: 16px; padding: 24px;">
 <span style="width: 40px; height: 40px; border-radius: 10px; background: #EAF7FD; display: flex; align-items: center; justify-content: center;"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#0A7AA6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg></span>
 <p style="margin: 18px 0 0; font-weight: 600; font-size: 16px; letter-spacing: -.01em;">Original ELD records, untouched</p>
@@ -367,16 +408,16 @@ input:focus,select:focus{outline:2px solid #68CFF7;outline-offset:1px}
 </section>
 
 <!-- ============ ALL FEATURES ============ -->
-<section id="features" style="background: #FFFFFF; padding: 104px 24px; border-top: 1px solid #EEF1F5;">
+<section id="features" class="section-pad" style="background: #FFFFFF; padding: 104px 24px; border-top: 1px solid #EEF1F5;">
 <div style="max-width: 1200px; margin: 0 auto;">
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px;">
+<div class="features-head" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px;">
 <div style="max-width: 560px;">
 <p style="margin: 0; font-size: 13px; font-weight: 500; color: #0A7AA6;">Everything in one platform</p>
 <h2 style="margin: 10px 0 0; font-size: clamp(28px, 3vw, 40px); font-weight: 600; line-height: 1.12; letter-spacing: -.035em;">13 capabilities. One source of truth.</h2>
 </div>
 <a class="btn-navy" href="#contact" style="font-size: 14px; font-weight: 500; padding: 11px 18px; border-radius: 10px;">Book a walkthrough</a>
 </div>
-<div style="margin-top: 44px; display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 12px;">
+<div style="margin-top: 44px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 12px;">
 <sc-for list="{{ features }}" as="f" hint-placeholder-count="13">
 <div class="card" style="border: 1px solid #E6EAF0; border-radius: 14px; padding: 20px;">
 <p style="margin: 0; display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; letter-spacing: -.01em;"><span style="width: 6px; height: 6px; border-radius: 2px; background: #68CFF7; flex: none;"></span>{{ f.t }}</p>
@@ -392,14 +433,14 @@ input:focus,select:focus{outline:2px solid #68CFF7;outline-offset:1px}
 </section>
 
 <!-- ============ QUESTIONS ============ -->
-<section style="background: radial-gradient(700px 420px at 0% 0%, rgba(104,207,247,.14), rgba(22,51,96,0) 70%), #163360; color: #FFFFFF; padding: 104px 24px;">
+<section class="section-pad" style="background: radial-gradient(700px 420px at 0% 0%, rgba(104,207,247,.14), rgba(22,51,96,0) 70%), #163360; color: #FFFFFF; padding: 104px 24px;">
 <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 56px;">
 <div style="flex: 1 1 340px; min-width: 0;">
 <p style="margin: 0; font-size: 13px; font-weight: 500; color: #68CFF7;">Answers, not guesses</p>
 <h2 style="margin: 10px 0 0; font-size: clamp(28px, 3vw, 40px); font-weight: 600; line-height: 1.12; letter-spacing: -.035em;">The questions AISAR answers in seconds.</h2>
 <p style="margin: 16px 0 0; max-width: 380px; font-size: 16px; line-height: 1.65; color: rgba(255,255,255,.7);">Every one of these used to take calls, spreadsheets and guesswork.</p>
 </div>
-<ul style="flex: 1.5 1 520px; min-width: 0; margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px;">
+<ul style="flex: 1.5 1 520px; min-width: 0; margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 10px;">
 <sc-for list="{{ questions }}" as="q" hint-placeholder-count="7">
 <li style="display: flex; gap: 12px; align-items: flex-start; padding: 16px 18px; border-radius: 12px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); font-size: 15px; line-height: 1.45; color: rgba(255,255,255,.92);"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="flex: none; margin-top: 1px;"><circle cx="12" cy="12" r="11" fill="#68CFF7"></circle><path d="M7 12.5l3.2 3L17 9" stroke="#163360" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>{{ q }}</li>
 </sc-for>
@@ -408,13 +449,13 @@ input:focus,select:focus{outline:2px solid #68CFF7;outline-offset:1px}
 </section>
 
 <!-- ============ ROLES ============ -->
-<section style="background: #FFFFFF; padding: 104px 24px; border-top: 1px solid #EEF1F5;">
+<section id="solutions" class="section-pad" style="background: #FFFFFF; padding: 104px 24px; border-top: 1px solid #EEF1F5;">
 <div style="max-width: 1200px; margin: 0 auto;">
 <div style="text-align: center;">
 <p style="margin: 0; font-size: 13px; font-weight: 500; color: #0A7AA6;">Solutions</p>
 <h2 style="margin: 10px 0 0; font-size: clamp(28px, 3vw, 40px); font-weight: 600; line-height: 1.12; letter-spacing: -.035em;">Built for every side of the load.</h2>
 </div>
-<div role="tablist" aria-label="Roles" style="margin: 32px auto 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; padding: 4px; border-radius: 12px; border: 1px solid #E6EAF0; width: fit-content; max-width: 100%;">
+<div class="tab-row" role="tablist" aria-label="Roles" style="margin: 32px auto 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; padding: 4px; border-radius: 12px; border: 1px solid #E6EAF0; width: fit-content; max-width: 100%;">
 <sc-for list="{{roles}}" as="r" hint-placeholder-count="4">
 <sc-if value="{{r.isOn}}" hint-placeholder-val="{{ false }}">
 <button type="button" role="tab" aria-selected="true" onClick="{{r.pick}}" style="font: inherit; font-size: 14px; font-weight: 500; padding: 10px 18px; min-height: 44px; border-radius: 9px; border: 0; cursor: pointer; background: #11284A; color: #FFFFFF;">{{r.label}}</button>
@@ -424,13 +465,13 @@ input:focus,select:focus{outline:2px solid #68CFF7;outline-offset:1px}
 </sc-if>
 </sc-for>
 </div>
-<div style="margin-top: 28px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center; border: 1px solid #E6EAF0; border-radius: 18px; padding: 40px; box-shadow: 0 1px 2px rgba(15,23,42,.04), 0 24px 48px -28px rgba(15,23,42,.16);">
+<div class="role-panel" style="margin-top: 28px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center; border: 1px solid #E6EAF0; border-radius: 18px; padding: 40px; box-shadow: 0 1px 2px rgba(15,23,42,.04), 0 24px 48px -28px rgba(15,23,42,.16);">
 <div style="flex: 1 1 380px; min-width: 0;">
-<h3 style="margin: 0; font-size: 24px; font-weight: 600; line-height: 1.2; letter-spacing: -.025em;">{{active.title}}</h3>
+<h3 style="margin: 0; font-size: clamp(20px, 5vw, 24px); font-weight: 600; line-height: 1.2; letter-spacing: -.025em;">{{active.title}}</h3>
 <p style="margin: 12px 0 0; max-width: 440px; font-size: 16px; line-height: 1.65; color: #475569;">{{active.body}}</p>
 <a class="btn-navy" href="#contact" style="margin-top: 24px; display: inline-block; font-size: 14px; font-weight: 500; padding: 11px 18px; border-radius: 10px;">Talk to our team</a>
 </div>
-<ul style="flex: 1 1 380px; min-width: 0; margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+<ul style="flex: 1 1 380px; min-width: 0; margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap: 10px;">
 <sc-for list="{{active.points}}" as="p" hint-placeholder-count="4">
 <li style="display: flex; gap: 10px; align-items: flex-start; padding: 16px; border-radius: 12px; border: 1px solid #EEF1F5; font-size: 14px; font-weight: 500; line-height: 1.45;"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="flex: none;"><circle cx="12" cy="12" r="11" fill="#EAF7FD"></circle><path d="M7 12.5l3.2 3L17 9" stroke="#0A7AA6" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>{{p.text}}</li>
 </sc-for>
@@ -440,7 +481,7 @@ input:focus,select:focus{outline:2px solid #68CFF7;outline-offset:1px}
 </section>
 
 <!-- ============ ROADMAP ============ -->
-<section id="roadmap" style="background: #FFFFFF; padding: 104px 24px; border-top: 1px solid #EEF1F5;">
+<section id="roadmap" class="section-pad" style="background: #FFFFFF; padding: 104px 24px; border-top: 1px solid #EEF1F5;">
 <div style="max-width: 1200px; margin: 0 auto;">
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px;">
 <div style="max-width: 560px;">
@@ -449,7 +490,7 @@ input:focus,select:focus{outline:2px solid #68CFF7;outline-offset:1px}
 </div>
 <p style="margin: 0; max-width: 380px; font-size: 16px; line-height: 1.6; color: #475569;">Identity comes first. Early-access partners help shape every release after it.</p>
 </div>
-<ol style="margin: 44px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+<ol style="margin: 44px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 12px;">
 <sc-for list="{{ phases }}" as="p" hint-placeholder-count="8">
 <li class="card" style="position: relative; border: 1px solid {{ p.bd }}; border-radius: 14px; padding: 20px; background: {{ p.bg }};">
 <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -465,7 +506,7 @@ input:focus,select:focus{outline:2px solid #68CFF7;outline-offset:1px}
 </section>
 
 <!-- ============ FAQ ============ -->
-<section id="faq" style="background: #FFFFFF; padding: 104px 24px; border-top: 1px solid #EEF1F5;">
+<section id="faq" class="section-pad" style="background: #FFFFFF; padding: 104px 24px; border-top: 1px solid #EEF1F5;">
 <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 56px;">
 <div style="flex: 1 1 320px; min-width: 0;">
 <p style="margin: 0; font-size: 13px; font-weight: 500; color: #0A7AA6;">FAQ</p>
@@ -489,10 +530,10 @@ input:focus,select:focus{outline:2px solid #68CFF7;outline-offset:1px}
 </section>
 
 <!-- ============ CTA ============ -->
-<section id="contact" style="background: #FFFFFF; padding: 0 24px 104px;">
-<div style="max-width: 1200px; margin: 0 auto; position: relative; overflow: hidden; border-radius: 22px; color: #FFFFFF; background: radial-gradient(520px 320px at 10% 100%, rgba(104,207,247,.22), rgba(17,40,74,0) 70%), radial-gradient(520px 320px at 90% 0%, rgba(66,110,180,.35), rgba(17,40,74,0) 70%), #163360;">
+<section id="contact" class="section-pad-tight" style="background: #FFFFFF; padding: 0 24px 104px;">
+<div class="cta-shell" style="max-width: 1200px; margin: 0 auto; position: relative; overflow: hidden; border-radius: 22px; color: #FFFFFF; background: radial-gradient(520px 320px at 10% 100%, rgba(104,207,247,.22), rgba(17,40,74,0) 70%), radial-gradient(520px 320px at 90% 0%, rgba(66,110,180,.35), rgba(17,40,74,0) 70%), #163360;">
 <svg viewBox="0 0 1240 420" preserveAspectRatio="xMaxYMax slice" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: .7;"><path d="M1010 0 L1050 0 L1240 420 L820 420 Z" fill="#0C2140"></path><path d="M1030 20 L1030 70 M1030 120 L1030 200 M1030 260 L1030 380" stroke="#68CFF7" stroke-opacity=".7" stroke-width="5" stroke-linecap="round"></path></svg>
-<div style="position: relative; padding: 56px 48px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
+<div class="cta-inner" style="position: relative; padding: 56px 48px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
 <div style="flex: 1 1 420px; min-width: 0;">
 <h2 style="margin: 0; font-size: clamp(26px, 2.8vw, 36px); font-weight: 600; line-height: 1.12; letter-spacing: -.035em;">See AISAR on your own fleet.</h2>
 <p style="margin: 12px 0 0; max-width: 420px; font-size: 16px; line-height: 1.6; color: rgba(255,255,255,.7);">Tell us how you work and we'll set up a walkthrough around it.</p>
@@ -508,9 +549,9 @@ input:focus,select:focus{outline:2px solid #68CFF7;outline-offset:1px}
 
 <!-- ============ FOOTER ============ -->
 <footer style="background: #0E2342; color: #A9B6CF;">
-<div style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 0;">
+<div class="footer-pad" style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 0;">
 <div style="display: flex; flex-wrap: wrap; gap: 56px; justify-content: space-between;">
-<div style="flex: 1 1 300px; max-width: 360px;">
+<div style="flex: 1 1 300px; max-width: 360px; min-width: 0;">
 <div style="display: flex; align-items: center; gap: 10px;">
 <svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#68CFF7"></rect><path d="M27.5 14 L36.5 14 L52 54 L12 54 Z" fill="#0E2342"></path><rect x="30.6" y="42" width="2.8" height="9" rx="1" fill="#68CFF7"></rect><rect x="31" y="30" width="2" height="7" rx="1" fill="#68CFF7"></rect></svg>
 <span style="font-weight: 600; font-size: 17px; letter-spacing: .12em; color: #FFFFFF;">AISAR</span>
@@ -524,14 +565,14 @@ input:focus,select:focus{outline:2px solid #68CFF7;outline-offset:1px}
 </div>
 </form>
 </div>
-<div style="flex: 2 1 560px; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 32px;">
+<div style="flex: 2 1 560px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr)); gap: 32px;">
 <div style="display: flex; flex-direction: column; gap: 11px;"><p style="margin: 0 0 4px; color: #FFFFFF; font-weight: 500; font-size: 14px;">Platform</p><a class="foot-a" href="#platform">Driver identity</a><a class="foot-a" href="#features">ELD integration</a><a class="foot-a" href="#platform">Fraud detection</a><a class="foot-a" href="#freight">Freight security</a><a class="foot-a" href="#features">Insurance verification</a></div>
 <div style="display: flex; flex-direction: column; gap: 11px;"><p style="margin: 0 0 4px; color: #FFFFFF; font-weight: 500; font-size: 14px;">Solutions</p><a class="foot-a" href="#solutions">Trucking companies</a><a class="foot-a" href="#solutions">Freight brokers</a><a class="foot-a" href="#solutions">Insurance agents</a><a class="foot-a" href="#solutions">Drivers</a></div>
 <div style="display: flex; flex-direction: column; gap: 11px;"><p style="margin: 0 0 4px; color: #FFFFFF; font-weight: 500; font-size: 14px;">Resources</p><a class="foot-a" href="#roadmap">Roadmap</a><a class="foot-a" href="#faq">FAQ</a><a class="foot-a" href="#security">Security</a><a class="foot-a" href="#contact">Request a demo</a></div>
 <div style="display: flex; flex-direction: column; gap: 11px;"><p style="margin: 0 0 4px; color: #FFFFFF; font-weight: 500; font-size: 14px;">Company</p><a class="foot-a" href="#top">About</a><a class="foot-a" href="#contact">Contact sales</a><a class="foot-a" href="#contact">[YOUR EMAIL]</a></div>
 </div>
 </div>
-<div style="margin-top: 56px; padding: 22px 0; border-top: 1px solid rgba(255,255,255,.08); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 13px;">
+<div class="footer-meta" style="margin-top: 56px; padding: 22px 0; border-top: 1px solid rgba(255,255,255,.08); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 13px;">
 <span>© 2026 AISAR. All rights reserved.</span>
 <div style="display: flex; flex-wrap: wrap; gap: 24px;"><a class="foot-a" href="#top" style="font-size: 13px;">Privacy policy</a><a class="foot-a" href="#top" style="font-size: 13px;">Terms of service</a><a class="foot-a" href="#security" style="font-size: 13px;">Security</a><a class="foot-a" href="#top" style="font-size: 13px;">Cookie settings</a></div>
 <div style="display: flex; gap: 8px;">
